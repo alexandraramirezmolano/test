@@ -30,9 +30,9 @@ class UserAdmin(auth_admin.UserAdmin):
         ),
         (_("Important dates"), {"fields": ("last_login", "date_joined")}),
     )
-    list_display = ["username", "name", "email", "is_superuser", "image", "nit", "allowed", "phone", "contact", "role"]
-    list_editable = ["image", "allowed", "phone", "nit", "contact", "role"]
-    list_filter = ["is_superuser", "allowed", "role"]
+    list_display = ["username", "name", "email", "is_superuser", "image", "nit", "allowed", "phone", "contact", "role", "allowed_private_projects"]
+    list_editable = ["image", "allowed", "phone", "nit", "contact", "role", "allowed_private_projects"]
+    list_filter = ["is_superuser", "allowed", "role", "allowed_private_projects"]
     search_fields = ["username", "name", "email"]
     list_per_page = 15
 

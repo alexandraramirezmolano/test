@@ -28,8 +28,8 @@ class NFTAttributeAdmin(admin.ModelAdmin):
 
 class NFTProjectAdmin(admin.ModelAdmin):
     model = NFTProject
-    list_display = ["id", "name", "image", "supply", "price", "chain"]
-    list_filter = ["id", "name", "supply", "price", "chain"]
+    list_display = ["id", "name", "image", "supply", "price", "chain", "private"]
+    list_filter = ["id", "name", "supply", "price", "chain", "private"]
     list_per_page = 15
     search_fields = ["id", "name", "supply", "price", "chain"]
     search_help_text = ["Buscar por ID, nombre, cantidad de bonos, precio individual de los bonos o cadena de bloques"]
