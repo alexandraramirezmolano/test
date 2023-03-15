@@ -24,7 +24,7 @@ class NFTProject(models.Model):
     number_of_nfts = models.PositiveIntegerField(default=10)
     image = models.ImageField(null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, null=True)
-    supply = models.IntegerField(blank=True)
+    supply = models.IntegerField(blank=True, default=0)
     price = models.CharField(max_length=200, null=True)
     chain = models.CharField(max_length=200, null=True)
     description = models.CharField(max_length=500, null=True)
