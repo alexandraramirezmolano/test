@@ -29,6 +29,7 @@ class NFTProject(models.Model):
     chain = models.CharField(max_length=200, null=True)
     description = models.CharField(max_length=500, null=True)
     coin = CharField(max_length=20, default="USD", blank=False, editable=False)
+    private = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name

@@ -31,6 +31,7 @@ class User(AbstractUser):
     role = CharField(max_length=20, choices=Role, default="Persona Natural", blank=True, editable=True)
     phone = CharField(max_length=30, null=True)
     contact = CharField(max_length=50, null=True)
+    allowed_private_projects = BooleanField(default=False)
 
     def get_absolute_url(self):
         """Get url for user's detail view.
