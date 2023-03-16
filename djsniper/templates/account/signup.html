@@ -12,7 +12,7 @@
 
 <p class="text-center">{% blocktranslate %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktranslate %}</p>
 
-<form class="signup text-center" id="signup_form" method="post" action="{% url 'account_signup' %}">
+<form class="signup text-center" id="signup_form" method="post" action="{% url 'signup' %}">
   {% csrf_token %}
 
   {{ form|crispy }}
