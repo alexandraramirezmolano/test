@@ -61,7 +61,7 @@ for a {{ site_name }} account and sign in below:{% endblocktranslate %}</p>
               <input type="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="Contraseña"/>
               <label class="form-label" for="typePasswordX-2"></label>
             </div>-->
-            <form class="login" method="POST" action="{% url 'account_login' %}">
+            <form class="login" method="POST" action="{% url 'login' %}">
               {% csrf_token %}
               {{ form|crispy }}
               {% if redirect_field_value %}
