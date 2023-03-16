@@ -18,6 +18,9 @@ urlpatterns = [
     # User management
     path("users/", include("djsniper.users.urls", namespace="users")),
     #path("accounts/", include("allauth.urls")),
+    path('accounts/login/', accounts_views.CustomLoginView.as_view(), name='login'),
+    path('accounts/logout/', accounts_views.CustomLogoutView.as_view(), name='logout'),
+    path('accounts/signup/', accounts_views.SignUpView.as_view(), name='signup'),
     path("celery-progress/", include("celery_progress.urls")),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
