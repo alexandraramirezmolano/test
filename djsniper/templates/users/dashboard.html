@@ -1,11 +1,11 @@
 {% if object.role == "Empresa" %}
   {% extends "dashboard/enterprise.html" %}
 
-  {% elif object.role == "Persona Natural" %}
+  {% elseif object.role == "Persona Natural" %}
 
     {% extends "dashboardcopy.html"%}
   
-    {% elif object.role == "Desarrollador"%}
+    {% elseif object.role == "Desarrollador"%}
 
       {% extends "dashboard/developer.html" %}
 
