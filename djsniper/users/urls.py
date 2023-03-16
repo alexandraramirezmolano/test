@@ -9,6 +9,9 @@ from djsniper.users.views import (
     OrderCreateView,
     UserProfileView,
     user_password_view,
+    CustomLoginView,
+    CustomLogoutView,
+    SignUpView
 )
 
 app_name = "users"
@@ -19,5 +22,8 @@ urlpatterns = [
     path("profile/<str:username>", view=UserProfileView, name="profile"),
     path("personal/", view=UserPersonalCreateView.as_view, name="personal"),
     path("enterprise/", view=UserEnterpriseCreateView.as_view(), name="enterprise"),
-    path("password/<str:username>", view=user_password_view, name="password")
+    path("password/<str:username>", view=user_password_view, name="password"),
+    path("login/", view=CustomLoginView().as_view(), name="login" ),
+    path("logout", view=CustomLogoutView().as_view(), name="logout"),
+    path("signup/", view=SignUpView().as_view(), name="signup")
 ]
