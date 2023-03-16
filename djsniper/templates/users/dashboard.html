@@ -63,7 +63,7 @@
               <p class="text-muted mb-4">{{ object.email }}</p>-->
               <!--{% if object.role == "Empresa" %}-->
               <!--{% elif object.role == "Persona Natural" %}-->
-              <!--{% endif %}--->
+              <!--{% endif %} -->
               <div class="d-flex align-left mb-2">
                   <a  href="{% url 'sniper:my-projects' user.username %}" type="button" class="btn btn-light w-100 fw-bold align-center">
                     <img src="{% static 'images/dashboard/icons/wave.png' %}" style="width:30px; height:30px; margin-right: 3rem;" class="mr-2"/>
@@ -145,7 +145,7 @@
 
                     <div class="profile-card-6" style="height:400px;"><img src="{{ project.image.url }}" class="img img-responsive img-center" style="object-fit:cover;">
                         <div class="profile-name">{{ project.name }}
-                            <br>$ {{ project.price }} {{ project.coin.¿ }}
+                            <br>$ {{ project.price }} {{ project.coin }}
                         </div>
                         <div class="profile-position">Bonos : {{ project.number_of_nfts }}</div>
                         <div class="profile-overview">
