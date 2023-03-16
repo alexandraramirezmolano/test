@@ -159,7 +159,7 @@ class DeveloperDashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'dashboard/developer.html'
 
 class CustomLogoutView(LogoutView):
-    template_name = 'accounts/logout.html'
+    template_name = 'account/logout.html'
 
 class SignUpView(CreateView):
     form_class = UserCreationForm
