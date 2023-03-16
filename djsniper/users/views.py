@@ -11,6 +11,8 @@ from django.contrib.auth.views import LoginView, LogoutView
 from .forms import UserPersonalCreationForm, UserEnterpriseCreationForm, UserChangeForm, UserChangePassword
 from django import forms
 from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+
 
 
 
