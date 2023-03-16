@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views import generic
 from django.views.generic import DetailView, RedirectView, UpdateView
 from .models import User, Order
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView, TemplateView
 from .forms import UserPersonalCreationForm, UserEnterpriseCreationForm, UserChangeForm, UserChangePassword
 from django import forms
