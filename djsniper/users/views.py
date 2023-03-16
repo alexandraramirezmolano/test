@@ -104,3 +104,63 @@ class OrderCreateView(generic.CreateView):
     template_name = "sniper/order_create.html"
     form_class = Order
     success_message = _("Tu orden ha sido listada")
+
+
+class CustomLoginView(LoginView):
+    template_name = 'account/login.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('users/dashboard.html')
+        else:
+            return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(self.request, user)
+            return redirect('users/dashboard.html')
+        else:
+            return self.form_invalid(form)
+
+@method_decorator(login_required, name='dispatch')
+class DashboardView(LoginRequiredMixin, TemplateView):
+    template_name = 'users/dashboard.html'
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_superuser:
+            return redirect('admin_dashboard')
+        elif request.user.groups.filter(Role='Empresa').exists():
+            return redirect('enterprise_dashboard')
+        elif request.user.groups.filter(Role='Persona Natural').exists():
+            return redirect('investor_dashboard')
+        elif request.user.groups.filter(Role='Desarrollador').exists():
+            return redirect('developer_dashboard')
+        else:
+            return HttpResponse("You don't have permission to access this page.")
+
+@method_decorator(login_required, name='dispatch')
+class AdminDashboardView(LoginRequiredMixin, TemplateView):
+    template_name = 'accounts/admin_dashboard.html'
+
+@method_decorator(login_required, name='dispatch')
+class EnterpriseDashboardView(LoginRequiredMixin, TemplateView):
+    template_name = 'dashboard/enterprise.html'
+
+@method_decorator(login_required, name='dispatch')
+class InvestorDashboardView(LoginRequiredMixin, TemplateView):
+    template_name = 'users/dashboard.html'
+
+@method_decorator(login_required, name='dispatch')
+class DeveloperDashboardView(LoginRequiredMixin, TemplateView):
+    template_name = 'dashboard/developer.html'
+
+class CustomLogoutView(LogoutView):
+    template_name = 'accounts/logout.html'
+
+class SignUpView(CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'account/signup.html'
