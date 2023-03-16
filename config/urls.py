@@ -5,6 +5,7 @@ from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 from rest_framework.authtoken.views import obtain_auth_token
+from accounts import views as accounts_views
 
 
 urlpatterns = [
@@ -16,7 +17,7 @@ urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
     path("users/", include("djsniper.users.urls", namespace="users")),
-    path("accounts/", include("allauth.urls")),
+    #path("accounts/", include("allauth.urls")),
     path("celery-progress/", include("celery_progress.urls")),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

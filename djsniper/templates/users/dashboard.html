@@ -1,18 +1,1 @@
-{% load i18n %}
 
-{% load humanize %}
-
-{% load crispy_forms_tags %}
-
-{% if object.role == "Empresa" %}
-  {% extends "dashboard/enterprise.html" %}
-
-  {% if object.role == "Persona Natural" %}
-
-    {% extends "dashboardcopy.html"%}
-  
-    {% if object.role == "Desarrollador"%}
-
-      {% extends "dashboard/developer.html" %}
-
-{% endif %}
