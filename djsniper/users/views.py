@@ -10,6 +10,8 @@ from .models import User, Order
 from django.contrib.auth.views import LoginView, LogoutView
 from .forms import UserPersonalCreationForm, UserEnterpriseCreationForm, UserChangeForm, UserChangePassword
 from django import forms
+from django.utils.decorators import method_decorator
+
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
