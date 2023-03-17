@@ -63,7 +63,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
             if self.request.user.role == "Desarrollador":
                 template_name = "dashboard/developer.html"
             elif self.request.user.role == "Persona Natural":
-                template_name = "users/dashboard.html
+                template_name = "users/dashboard.html"
             elif self.request.user.role == "Empresa":
                 template_name = "dashboard/enterprise.html"
             else:
