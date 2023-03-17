@@ -46,8 +46,8 @@ def login_view(request):
                 return redirect('developer_home')
             elif user.role is "Persona Natural":
                 return redirect('investor_home')
-            #elif user.role is "Empresa":
-            #    return redirect('enterprise_home')
+            elif user.role is "Empresa":
+                return redirect('enterprise_home')
             else:
                 console.log(user.role)
     return render(request, 'account/login.html')
@@ -100,9 +100,21 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
     permanent = False
 
     def get_redirect_url(self):
-        return reverse("users:detail", kwargs={
-            "username": self.request.user.username
-        })
+        
+        if user is not None:
+            login(request, user)
+            if user.role is "Desarrollador":
+                return redirect('developer_home')
+            elif user.role is "Persona Natural":
+                return redirect('investor_home')
+            elif user.role is "Empresa":
+                return redirect('enterprise_home')
+            else:
+                console.log(user.role)
+
+        #return reverse("users:detail", kwargs={
+        #    "username": self.request.user.username
+        #})
 
 
 user_redirect_view = UserRedirectView.as_view()
