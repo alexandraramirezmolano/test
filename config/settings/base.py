@@ -2,6 +2,7 @@
 Base settings to build other settings files upon.
 """
 from pathlib import Path
+from django.urls import reverse_lazy
 
 import environ
 
@@ -139,9 +140,12 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
 AUTH_USER_MODEL = "users.User"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
-LOGIN_REDIRECT_URL = "users:redirect"
+#LOGIN_REDIRECT_URL = "users:redirect"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
 LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = reverse_lazy('developer_home')
+LOGIN_REDIRECT_URL = reverse_lazy('investor_home')
+LOGIN_REDIRECT_URL = reverse_lazy('enterprise_home')
 
 # PASSWORDS
 # ------------------------------------------------------------------------------
