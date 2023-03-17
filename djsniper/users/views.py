@@ -42,11 +42,11 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            if user.role == 'Desarrollador':
+            if user.role is "Desarrollador":
                 return redirect('developer_home')
-            elif user.role == 'Persona Natural':
+            elif user.role is "Persona Natural":
                 return redirect('investor_home')
-            elif user.role == 'Empresa':
+            elif user.role is "Empresa":
                 return redirect('enterprise_home')
             else:
                 console.log(user.role)
