@@ -56,7 +56,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
     slug_field = "username"
     slug_url_kwarg = "username"
-    template_name = "users/dashboard.html" # default value
+    #template_name = "users/dashboard.html" # default value
 
     def get(self, request, *args, **kwargs):
         if self.request.user is not None:
