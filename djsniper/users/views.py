@@ -42,15 +42,14 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            if user.role == Role[3][0]:
-                console.log(user.role, Role[3][0])
+            if user.role == 'Desarrollador':
                 return redirect('developer_home')
-            elif user.role == Role[0][0]:
-                console.log(user.role, Role[0][0])
+            elif user.role == 'Persona Natural':
                 return redirect('investor_home')
-            elif user.role == Role[1][0]:
-                console.log(user.role, Role[1][0])
+            elif user.role == 'Empresa':
                 return redirect('enterprise_home')
+            else:
+                console.log(user.role)
     return render(request, 'account/login.html')
 
 class UserDetailView(LoginRequiredMixin, DetailView):
