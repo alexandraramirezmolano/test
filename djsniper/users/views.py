@@ -101,7 +101,7 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
     def get_redirect_url(self):
         if self.request.user is not None:
-            login(request, user)
+            #login(request, user)
             if self.request.user.role is "Desarrollador":
                 return reverse('developer_home')
             elif self.request.user.role is "Persona Natural":
