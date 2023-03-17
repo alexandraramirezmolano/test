@@ -22,5 +22,4 @@ urlpatterns = [
     path("personal/", view=UserPersonalCreateView.as_view, name="personal"),
     path("enterprise/", view=UserEnterpriseCreateView.as_view(), name="enterprise"),
     path("password/<str:username>", view=user_password_view, name="password"),
-    path("login/", view=login_view.as_view, name="login")
 ]
