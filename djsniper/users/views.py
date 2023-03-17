@@ -62,7 +62,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     #template_name = "users/dashboard.html" # default value
 
     def get(self, request, *args, **kwargs):
-        user = authenticate(request, username=username, password=password, backend='django.contrib.auth.backends.ModelBackend')
+        user = authenticate(request, username=self.request.user.username, password=self.request.user.password, backend='django.contrib.auth.backends.ModelBackend')
         if self.request.user is not None:
             user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, self.request.user)
