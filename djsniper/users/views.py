@@ -100,7 +100,7 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
     permanent = False
 
     def get_redirect_url(self):
-        
+
         if user is not None:
             login(request, user)
             if user.role is "Desarrollador":
@@ -110,11 +110,7 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
             elif user.role is "Empresa":
                 return redirect('enterprise_home')
             else:
-                console.log(user.role)
-
-        #return reverse("users:detail", kwargs={
-        #    "username": self.request.user.username
-        #})
+                return reverse("users:detail", kwargs={"username": self.request.user.username})
 
 
 user_redirect_view = UserRedirectView.as_view()
