@@ -46,8 +46,8 @@ def login_view(request):
                 return redirect('developer_home')
             elif user.role is "Persona Natural":
                 return redirect('investor_home')
-            elif user.role is "Empresa":
-                return redirect('enterprise_home')
+            #elif user.role is "Empresa":
+            #    return redirect('enterprise_home')
             else:
                 console.log(user.role)
     return render(request, 'account/login.html')
