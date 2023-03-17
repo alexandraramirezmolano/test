@@ -22,7 +22,7 @@ def developer_home(request):
     return render(request, 'dashboard/developer.html')
 
 def investor_home(request):
-    return render(request, 'dashboard/investor.html')
+    return render(request, 'user/dashboard.html')
 
 def enterprise_home(request):
     return render(request, 'dashboard/enterprise.html')
