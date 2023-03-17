@@ -102,14 +102,14 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
     def get_redirect_url(self):
         if self.request.user is not None:
             #login(request, user)
-            if self.request.user.role is "Desarrollador":
+            if self.request.user.role == "Desarrollador":
                 return reverse('developer_home')
-            elif self.request.user.role is "Persona Natural":
+            elif self.request.user.role == "Persona Natural":
                 return reverse('investor_home')
-            elif self.request.user.role is "Empresa":
+            elif self.request.user.role == "Empresa":
                 return reverse('enterprise_home')
             else:
-                console.log(self.request.user.role)
+                print(self.request.user.role)
         #return reverse("users:detail", kwargs={"username": self.request.user.username})
 
 
