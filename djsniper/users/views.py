@@ -17,6 +17,13 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import authenticate, login
 
 
+Role = (
+    ('Persona Natural', 'Persona Natural'),
+    ('Empresa', 'Empresa'),
+    ('Administrador', 'Administrador'),
+    ('Desarrollador', 'Desarrollador')
+)
+
 
 def developer_home(request):
     return render(request, 'dashboard/developer.html')
@@ -35,11 +42,11 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            if user.role == 'Desarrollador':
+            if user.role == Role[3][0]:
                 return redirect('developer_home')
-            elif user.role == 'Persona Natural':
+            elif user.role == Role[0][0]:
                 return redirect('investor_home')
-            elif user.role == 'Empresa':
+            elif user.role == Role[1][0]:
                 return redirect('enterprise_home')
     return render(request, 'account/login.html')
 
@@ -110,12 +117,6 @@ class UserPersonalCreateView(generic.CreateView):
         return redirect("sniper:home")
 
 
-Role = (
-    ('Persona Natural', 'Persona Natural'),
-    ('Empresa', 'Empresa'),
-    ('Administrador', 'Administrador'),
-    ('Desarrollador', 'Desarrollador')
-)
 
 
 class UserEnterpriseCreateView(generic.CreateView):
