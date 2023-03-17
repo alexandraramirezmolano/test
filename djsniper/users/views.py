@@ -61,11 +61,11 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         if self.request.user is not None:
             #login(request, user)
             if self.request.user.role == "Desarrollador":
-                return reverse('developer_home')
+                template_name = "dashboard/developer.html"
             elif self.request.user.role == "Persona Natural":
-                return reverse('investor_home')
+                template_name = "users/dashboard.html
             elif self.request.user.role == "Empresa":
-                return reverse('enterprise_home')
+                template_name = "dashboard/enterprise.html"
             else:
                 print(self.request.user.role)
 
