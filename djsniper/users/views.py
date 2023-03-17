@@ -60,9 +60,9 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     slug_field = "username"
     slug_url_kwarg = "username"
     #template_name = "users/dashboard.html" # default value
-    user = authenticate(request, username=username, password=password, backend='django.contrib.auth.backends.ModelBackend')
 
     def get(self, request, *args, **kwargs):
+        user = authenticate(request, username=username, password=password, backend='django.contrib.auth.backends.ModelBackend')
         if self.request.user is not None:
             user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, self.request.user)
