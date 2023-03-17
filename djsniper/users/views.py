@@ -57,14 +57,15 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     slug_field = "username"
     slug_url_kwarg = "username"
     #template_name = "users/dashboard.html"
-    if self.request.user.role == "Desarrollador":
-        template_name = "dashboard/developer.html"
-    elif self.request.user.role == "Persona Natural":
-        template_name == "users/dashboard.html"
-    elif self.request.user.role == "Empresa":
-        template_name == "dashboard/enterprise.html"
-    else:
-        print(self.request.user.role)
+    if self.request.user is not None:
+        if self.request.user.role == "Desarrollador":
+            template_name = "dashboard/developer.html"
+        elif self.request.user.role == "Persona Natural":
+            template_name == "users/dashboard.html"
+        elif self.request.user.role == "Empresa":
+            template_name == "dashboard/enterprise.html"
+        else:
+            print(self.request.user.role)
 
 
 user_detail_view = UserDetailView.as_view()
