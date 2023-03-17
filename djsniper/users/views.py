@@ -43,10 +43,13 @@ def login_view(request):
         if user is not None:
             login(request, user)
             if user.role == Role[3][0]:
+                console.log(user.role, Role[3][0])
                 return redirect('developer_home')
             elif user.role == Role[0][0]:
+                console.log(user.role, Role[0][0])
                 return redirect('investor_home')
             elif user.role == Role[1][0]:
+                console.log(user.role, Role[1][0])
                 return redirect('enterprise_home')
     return render(request, 'account/login.html')
 
