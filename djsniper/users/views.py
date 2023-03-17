@@ -56,19 +56,20 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
     slug_field = "username"
     slug_url_kwarg = "username"
-    #template_name = "users/dashboard.html"
-    def get_redirect_url(self):
+    template_name = "users/dashboard.html" # default value
+
+    def get(self, request, *args, **kwargs):
         if self.request.user is not None:
-            #login(request, user)
+            login(request, self.request.user)
             if self.request.user.role == "Desarrollador":
-                template_name = "dashboard/developer.html"
+                self.template_name = "dashboard/developer.html"
             elif self.request.user.role == "Persona Natural":
-                template_name = "users/dashboard.html"
+                self.template_name = "users/dashboard.html"
             elif self.request.user.role == "Empresa":
-                template_name = "dashboard/enterprise.html"
+                self.template_name = "dashboard/enterprise.html"
             else:
                 print(self.request.user.role)
-
+        return super().get(request, *args, **kwargs)
 
 user_detail_view = UserDetailView.as_view()
 
