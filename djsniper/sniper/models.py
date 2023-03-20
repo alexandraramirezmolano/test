@@ -1,9 +1,7 @@
 from django.db import models
 from django.db.models import CharField
 import uuid
-from django.conf import settings
- 
-User = settings.AUTH_USER_MODEL
+from djsniper.users.models import User
 
 
 
