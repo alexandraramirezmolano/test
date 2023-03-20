@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models import CharField
 import uuid
-from djsniper.users.models import User
+from app.djsniper.users.models import User
 
 
 
