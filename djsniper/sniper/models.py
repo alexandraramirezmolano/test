@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models import CharField
 import uuid
-from django.utils.functional import lazy_import
+from django.utils.module_loading import lazy_import
 
 User = lazy_import('djsniper.users.models', 'User')
 
