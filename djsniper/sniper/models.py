@@ -1,7 +1,9 @@
 from django.db import models
 from django.db.models import CharField
 import uuid
+from django.conf import settings
  
+User = settings.AUTH_USER_MODEL
 
 
 
@@ -30,7 +32,7 @@ class NFTProject(models.Model):
     description = models.CharField(max_length=500, null=True)
     coin = CharField(max_length=20, default="USD", blank=False, editable=False)
     private = models.BooleanField(default=True)
-    enterprise = models.ForeignKey('djsniper.users.models.User', on_delete=models.CASCADE)
+    enterprise = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
     def __str__(self):
