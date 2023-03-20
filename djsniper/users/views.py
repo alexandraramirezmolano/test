@@ -45,11 +45,11 @@ def login_view(request):
         if user is not None:
             user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, user)
-            if user.role is "Desarrollador":
+            if user.role == "Desarrollador":
                 return redirect('developer_home')
-            elif user.role is "Persona Natural":
+            elif user.role == "Persona Natural":
                 return redirect('investor_home')
-            elif user.role is "Empresa":
+            elif user.role == "Empresa":
                 return redirect('enterprise_home')
             else:
                 console.log(user.role)
