@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models import CharField
 import uuid
-
+from djsniper.users.models import User
 
 
 
@@ -30,6 +30,8 @@ class NFTProject(models.Model):
     description = models.CharField(max_length=500, null=True)
     coin = CharField(max_length=20, default="USD", blank=False, editable=False)
     private = models.BooleanField(default=True)
+    enterprise = models.ManyToManyField(User, editable=True)
+    developer = models.ManyToManyField(User, editable=True)
 
     def __str__(self):
         return self.name
