@@ -30,8 +30,8 @@ class NFTProject(models.Model):
     description = models.CharField(max_length=500, null=True)
     coin = CharField(max_length=20, default="USD", blank=False, editable=False)
     private = models.BooleanField(default=True)
-    enterprise = models.ForeignKey('djsniper.users.models.User')
-    developer = models.ForeignKey('djsniper.users.models.User')
+    enterprise = models.ForeignKey('djsniper.users.models.User', on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.name
