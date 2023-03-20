@@ -1,9 +1,7 @@
 from django.db import models
 from django.db.models import CharField
 import uuid
-from django.utils.module_loading import lazy_import
-
-User = lazy_import('djsniper.users.models', 'User')
+ 
 
 
 
@@ -32,8 +30,8 @@ class NFTProject(models.Model):
     description = models.CharField(max_length=500, null=True)
     coin = CharField(max_length=20, default="USD", blank=False, editable=False)
     private = models.BooleanField(default=True)
-    enterprise = models.ManyToManyField(User, editable=True)
-    developer = models.ManyToManyField(User, editable=True)
+    enterprise = models.ForeignKey('djsniper.users.models.User')
+    developer = models.ForeignKey('djsniper.users.models.User')
 
     def __str__(self):
         return self.name
