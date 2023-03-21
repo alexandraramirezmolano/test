@@ -24,29 +24,26 @@ class ProjectForm(forms.ModelForm):
             'price': {'required': 'Por favor ingrese un precio para el proyecto'},
             'description': {'required': 'Por favor ingrese una descripción para el proyecto'},
         }
-        def __init__(self, *args, **kwargs):
-            super(ProjectForm, self).__init__(*args, **kwargs)
-            self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Name'})
-            self.fields['contract_address'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract Address'})
-            self.fields['image'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Image'})
-            self.fields['number_of_nfts'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Number of NFTs'})
-            self.fields['supply'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Supply'})
-            self.fields['price'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Price'})
-            self.fields['chain'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Chain'})
-            self.fields['contract_abi'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract ABI', 'rows': 5})
-            self.fields['category'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Category'})
-            self.fields['description'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Description', 'rows': 5})
-            # divide the fields into two columns
-            self.fields['name'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
-            self.fields['contract_address'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
-            self.fields['contract_abi'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
-            self.fields['number_of_nfts'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
-            self.fields['image'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
-            self.fields['category'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
-            self.fields['supply'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
-            self.fields['price'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
-            self.fields['chain'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
-            self.fields['description'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
+        
+    def __init__(self, *args, **kwargs):
+        super(ProjectForm, self).__init__(*args, **kwargs)
+        
+        # update widget attributes
+        self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Name'})
+        self.fields['contract_address'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract Address'})
+        self.fields['image'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Image'})
+        self.fields['number_of_nfts'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Number of NFTs'})
+        self.fields['supply'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Supply'})
+        self.fields['price'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Price'})
+        self.fields['chain'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Chain'})
+        self.fields['contract_abi'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract ABI', 'rows': 5})
+        self.fields['category'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Category'})
+        self.fields['description'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Description', 'rows': 5})
+        
+        # divide the fields into two columns
+        for field_name in self.fields:
+            self.fields[field_name].widget.attrs['class'] = 'form-control col-md-6 flex-column'
+
 
 class CategoryForm(forms.ModelForm):
     class Meta:
