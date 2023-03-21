@@ -33,10 +33,10 @@ class NFTProjectAdmin(admin.ModelAdmin):
         return self.model._meta.get_fields()
 
     list_per_page = 15
-    list_display = [field.name for field in self.get_model_fields()]
-    list_filter = list_display
-    search_fields = list_display
-    search_help_text = ["Buscar por {}".format(field.verbose_name) for field in self.get_model_fields()]
+    list_display = [field.name for field in get_model_fields()]
+    list_filter = [field.name for field in get_model_fields() if field.is_relation]
+    search_fields = [field.name for field in get_model_fields() if not field.is_relation]
+    search_help_text = ["Buscar por {}".format(field.verbose_name) for field in search_fields]
 
 
 

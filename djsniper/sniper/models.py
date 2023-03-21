@@ -29,12 +29,12 @@ class NFTProject(models.Model):
     coin = CharField(max_length=20, default="USD", blank=False, editable=False)
     private = models.BooleanField(default=True)
 
+    class Meta:
+        verbose_name_plural = "NFTProjects"
 
     def __str__(self):
         return self.name
     
-    class Meta:
-        verbose_name_plural = "NFTProjects"
 
 
 class NFT(models.Model):
