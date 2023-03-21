@@ -86,6 +86,13 @@ class ProjectListView(generic.ListView):
         return NFTProject.objects.all()
 
 
+class EnterpriseProjectsView(LoginRequiredMixin, ListView):
+    model = NFTProject
+    template_name = 'dashboard/enterprise/projects_list.html'
+
+    def get_queryset(self):
+        return super().get_queryset().filter(developers=self.request.user)
+
 class UserProjectsView(generic.ListView):
     template_name = "users/my_projects.html"
     model = Order
