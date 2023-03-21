@@ -28,7 +28,6 @@ class NFTProject(models.Model):
     description = models.CharField(max_length=500, null=True)
     coin = CharField(max_length=20, default="USD", blank=False, editable=False)
     private = models.BooleanField(default=True)
-    user = models.ForeignKey(AUTH_USER_MODEL,on_delete=models.CASCADE,related_name='owner') # added related_name argument)
 
     class Meta:
         verbose_name = "NFTProjects"
