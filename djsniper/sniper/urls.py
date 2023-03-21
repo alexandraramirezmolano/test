@@ -14,7 +14,7 @@ urlpatterns = [
     path(
         "project/<pk>/delete/", views.ProjectDeleteView.as_view(), name="project-delete"
     ),
-    path('enterprise-projects/<str:username>', UserProjectsView.as_view(), name='enterprise-projects'),
+    path('enterprise-projects/<str:username>', EnterpriseProjectsView.as_view(), name='enterprise-projects'),
     #path("project/<pk>/clear/", views.ProjectClearView.as_view(), name="project-clear"),
     #path("project/<pk>/fetch-nfts/", views.FetchNFTsView.as_view(), name="fetch-nfts"),
     #path("project/<pk>/order/", views.ProjectDetailView.as_view(), name="order"),},
