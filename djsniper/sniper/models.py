@@ -1,8 +1,6 @@
 from django.db import models
 from django.db.models import CharField
 import uuid
-from djsniper.users.models import User
-
 
 
 class Category(models.Model):
@@ -30,11 +28,13 @@ class NFTProject(models.Model):
     description = models.CharField(max_length=500, null=True)
     coin = CharField(max_length=20, default="USD", blank=False, editable=False)
     private = models.BooleanField(default=True)
-    enterprise = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name_plural = "NFTProjects"
 
 
 class NFT(models.Model):

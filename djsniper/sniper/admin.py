@@ -28,11 +28,19 @@ class NFTAttributeAdmin(admin.ModelAdmin):
 
 class NFTProjectAdmin(admin.ModelAdmin):
     model = NFTProject
-    list_display = ["id", "name", "image", "supply", "price", "chain", "private"]
-    list_filter = ["id", "name", "supply", "price", "chain", "private"]
+
+    def get_model_fields(self, model):
+        return model._meta.get_fields()
+
+    #list_display = ["id", "name", "image", "supply", "price", "chain", "private"]
+    #list_filter = ["id", "name", "supply", "price", "chain", "private"]
     list_per_page = 15
-    search_fields = ["id", "name", "supply", "price", "chain"]
-    search_help_text = ["Buscar por ID, nombre, cantidad de bonos, precio individual de los bonos o cadena de bloques"]
+    list_display = [field.name for field in get_model_fields(NFTProject)]
+    list_filter = list_display
+    search_fields = list_display
+    search_help_text = ["Buscar por {}".format(field.verbose_name) for field in get_model_fields(NFTProject)]
+    #search_fields = ["id", "name", "supply", "price", "chain"]
+    #search_help_text = ["Buscar por ID, nombre, cantidad de bonos, precio individual de los bonos o cadena de bloques"]
 
 
 class NFTTraitAdmin(admin.ModelAdmin):
