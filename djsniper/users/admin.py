@@ -77,6 +77,3 @@ class DeveloperAdmin(admin.ModelAdmin):
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Order, OrderAdmin)
-admin.site.register(InvestorAdmin)
-admin.site.register(EnterpriseAdmin)
-admin.site.register(DeveloperAdmin)
