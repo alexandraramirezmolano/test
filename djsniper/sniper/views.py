@@ -316,7 +316,7 @@ class ProjectDeleteView(generic.DeleteView):
     def get_success_url(self):
         return reverse("sniper:project-list")
 
-
+"""
 class ProjectClearView(SingleObjectMixin, generic.FormView):
     template_name = "sniper/project_clear.html"
     form_class = ConfirmForm
@@ -361,3 +361,4 @@ def get_progress(request, task_id):
         "details": result.info,
     }
     return HttpResponse(json.dumps(response_data), content_type="application/json")
+"""
