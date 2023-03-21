@@ -38,12 +38,16 @@ class UserAdmin(auth_admin.UserAdmin):
 
 class UserModelAdmin(admin.ModelAdmin):
     model = UserModel
-    list_display = ["username", "name", "email",  "image", "nit", "allowed", "phone", "contact", "role"]
+    list_display = ["username", "name", "email",  "image", "nit", "allowed", "phone", "contact", "role", "display_projects"]
     list_editable = ["image", "allowed", "phone", "nit", "contact", "role"]
     list_filter = ["allowed", "role"]
     search_fields = ["username", "name", "email"]
     list_per_page = 15
 
+    def display_projects(self, obj):
+        return ', '.join([project.name for project in obj.project.all()])
+
+    display_projects.short_description = 'Projects'
 
 class OrderAdmin(admin.ModelAdmin):
     model = Order
