@@ -65,9 +65,9 @@ class DeveloperAdmin(UserAdmin):
     model = Developer
     list_display = ['id', 'username', 'email', 'is_staff', 'is_active', 'allowed_private_projects']
 
-admin.site.register(Enterprise, EnterpriseAdmin)
-admin.site.register(Investor, InvestorAdmin)
-admin.site.register(Developer, DeveloperAdmin)
+admin.site.register(EnterpriseAdmin)
+admin.site.register( InvestorAdmin)
+admin.site.register(DeveloperAdmin)
     
 
 admin.site.register(User, UserAdmin)
