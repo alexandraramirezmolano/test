@@ -38,7 +38,7 @@ class NFTProject(models.Model):
         return self.name
     
 
-
+"""
 class NFT(models.Model):
     project = models.ForeignKey(
         NFTProject, on_delete=models.CASCADE, related_name="nfts"
@@ -51,7 +51,7 @@ class NFT(models.Model):
     def __str__(self):
         return f"{self.project.name}: {self.nft_id}"
 
-
+"""
 #class NFTAttribute(models.Model):
 #    project = models.ForeignKey(
 #        NFTProject, on_delete=models.CASCADE, related_name="attributes"
