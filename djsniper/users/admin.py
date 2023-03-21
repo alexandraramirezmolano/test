@@ -53,24 +53,21 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = ["nft", "approved"]
     list_per_page = 10
 
-@admin.register(Enterprise)
-class EnterpriseAdmin(admin.ModelAdmin):
+class EnterpriseAdmin(UserAdmin):
     model = Enterprise
-    list_display = '__all__'
-    filter_horizontal = ['project']
+    list_display = ('id', 'username', 'email', 'is_staff', 'is_active')
 
-
-@admin.register(Investor)
-class InvestorAdmin(admin.ModelAdmin):
+class InvestorAdmin(UserAdmin):
     model = Investor
-    list_display = '__all__'
-    filter_horizontal = ['project']
+    list_display = ('id', 'username', 'email', 'is_staff', 'is_active')
 
-
-@admin.register(Developer)
-class DeveloperAdmin(admin.ModelAdmin):
+class DeveloperAdmin(UserAdmin):
     model = Developer
-    filter_horizontal = ['enterprise', 'project']
+    list_display = ('id', 'username', 'email', 'is_staff', 'is_active', 'allowed_private_projects')
+
+admin.site.register(Enterprise, EnterpriseAdmin)
+admin.site.register(Investor, InvestorAdmin)
+admin.site.register(Developer, DeveloperAdmin)
     
 
 admin.site.register(User, UserAdmin)
