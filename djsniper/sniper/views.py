@@ -11,7 +11,7 @@ from django.views import generic
 from django.views.generic.detail import SingleObjectMixin, View
 from django.views.generic.edit import FormMixin
 from django.contrib.auth.decorators import login_required, user_passes_test
-from djsniper.sniper.forms import ConfirmForm, ProjectForm
+from djsniper.sniper.forms import ConfirmForm, EnterpriseProjectForm, DeveloperProjectForm
 from djsniper.sniper.models import NFTProject, Category
 #from djsniper.sniper.tasks import fetch_nfts_task
 from rest_framework import viewsets
@@ -78,11 +78,6 @@ class OrdersViewset(viewsets.ModelViewSet):
     def get_queryset(self):
         category = Category.objects.all()
 
-        #name = self.request.GET.get('name')
-        #if name:
-        #    category = category.filter(name__contains=name)
-        #else:
-        #    return category
 
 class ProjectListView(generic.ListView):
     template_name = "sniper/project_list.html"
@@ -93,14 +88,6 @@ class ProjectListView(generic.ListView):
 
 class UserProjectsView(generic.ListView):
     template_name = "users/my_projects.html"
-
-    #def get_queryset(self):
-    #    objects = Order.objects.all()
-
-    #    grouped_objects = groupby(objects.values('nft'))
-    #    print(grouped_objects, lambda x: x['id'])
-    #    return {'grouped_objects': grouped_objects}
-    #     return Order.objects.filter(approved=True)
     model = Order
 
     def __init__(self):
@@ -137,80 +124,7 @@ class UserPaymentsHistoryView(generic.ListView):
         return Order.objects.all()
 
 
-# class ProjectDetailView(generic.DetailView):
-#    template_name = "sniper/project_detail.html"
 
-#    def get_queryset(self):
-#        return NFTProject.objects.all()
-
-#    def get_context_data(self, **kwargs):
-#        context = super().get_context_data(**kwargs)
-#        nft_project = self.get_object()
-#        order = self.request.GET.get("order", None)
-#        nfts = nft_project.nfts.all()
-#        if order == "rank":
-#            nfts = nfts.order_by("rank")
-#        context.update({"nfts": nfts[0:12]})
-#        return context
-
-# class ProjectDetailView(FormMixin, generic.DetailView):
-
-#    model = Order
-#    context_object_name = 'object'
-#    template_name = 'sniper/order_create.html'
-#    form_class = OrderCreationForm
-
-#    def get_success_url(self):
-#        return reverse('project-detail', kwargs={'pk': self.object.pk})
-#        #return reverse('sniper:home')
-
-#    def get_object(self):
-#        try:
-#            my_object = NFTProject.objects.get(id=self.kwargs.get('pk'))
-#            return my_object
-#        except self.model.DoesNotExist:
-#            raise Http404("No MyModel matches the given query.")
-
-#    def get_context_data(self, *args, **kwargs):
-#        context = super(ProjectDetailView, self).get_context_data(*args, **kwargs)
-#        nft_project = self.get_object()
-# form
-#        context['form'] = self.get_form()
-#        context['project'] = nft_project
-#        return context
-
-#    def post(self, request, *args, **kwargs):
-#        self.object = self.get_object()
-#        form = self.get_form()
-#        if form.is_valid():
-#            return self.form_valid(form)
-#        else:
-#            return self.form_invalid(form)
-
-#    def form_valid(self, form):
-# put logic here
-#        return super(ProjectDetailView, self).form_valid(form)
-
-#    def form_invalid(self, form):
-# put logic here
-#        return super(ProjectDetailView, self).form_invalid(form)
-
-
-# class ProjectDetailView(generic.DetailView):
-#    template_name = "sniper/project_detail.html"
-
-#    def get_queryset(self):
-#        return NFTProject.objects.all()
-
-#    def get_context_data(self, **kwargs):
-#        context = super().get_context_data(**kwargs)
-#        nft_project = self.get_object()
-#        order = self.request.GET.get("order", None)
-#        nfts = nft_project.nfts.all()
-#        if order == "rank":
-#            nfts = nfts.order_by("rank")
-#        context.update({"nfts": nfts[0:12]})
-#        return context
 
 class ProjectDetailView(ModelFormMixin, generic.DetailView):
     model = NFTProject
@@ -268,7 +182,6 @@ class OrderCreateView(generic.CreateView):
 
 class ProjectCreateView(generic.CreateView):
     template_name = "sniper/project_create.html"
-    form_class = ProjectForm
 
     def form_valid(self, form):
         instance = form.save()
@@ -276,6 +189,16 @@ class ProjectCreateView(generic.CreateView):
 
     def get_queryset(self):
         return NFTProject.objects.all()
+
+    def get_form_class(self):
+        user = self.request.user
+        if user.is_authenticated:
+            if user.role == "Desarrollador":
+                return DeveloperProjectForm
+            elif user.role == "Empresa":
+                return EnterpriseProjectForm
+        # Default form class
+        return ProjectForm
 
 
 class ProjectUpdateView(generic.UpdateView):
@@ -316,49 +239,3 @@ class ProjectDeleteView(generic.DeleteView):
     def get_success_url(self):
         return reverse("sniper:project-list")
 
-"""
-class ProjectClearView(SingleObjectMixin, generic.FormView):
-    template_name = "sniper/project_clear.html"
-    form_class = ConfirmForm
-
-    def get(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        context = self.get_context_data(object=self.object)
-        return self.render_to_response(context)
-
-    def get_queryset(self):
-        return NFTProject.objects.all()
-
-    def form_valid(self, form):
-        nft_project = self.get_object()
-        nft_project.nfts.all().delete()
-        #.objects.filter(project=nft_project).delete()
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        return reverse("sniper:project-detail", kwargs={"pk": self.kwargs["pk"]})
-
-
-def nft_list(request):
-    project = NFTProject.objects.get(name="BAYC")
-    nfts = project.nfts.all().order_by("-rarity_score")[0:12]
-    return render(request, "nfts.html", {"nfts": nfts})
-
-
-class FetchNFTsView(generic.FormView):
-    template_name = "sniper/fetch_nfts.html"
-    form_class = ConfirmForm
-
-    def form_valid(self, form):
-        result = fetch_nfts_task.apply_async((self.kwargs["pk"],), countdown=1)
-        return render(self.request, self.template_name, {"task_id": result.task_id})
-
-
-def get_progress(request, task_id):
-    result = AsyncResult(task_id)
-    response_data = {
-        "state": result.state,
-        "details": result.info,
-    }
-    return HttpResponse(json.dumps(response_data), content_type="application/json")
-"""
