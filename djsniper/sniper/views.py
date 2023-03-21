@@ -198,7 +198,7 @@ class ProjectCreateView(generic.CreateView):
             elif user.role == "Empresa":
                 return EnterpriseProjectForm
         # Default form class
-        return ProjectForm
+        return EnterpriseProjectForm
 
 
 class ProjectUpdateView(generic.UpdateView):
