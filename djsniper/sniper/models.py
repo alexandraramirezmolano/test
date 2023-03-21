@@ -28,8 +28,8 @@ class NFTProject(models.Model):
     description = models.CharField(max_length=500, null=True)
     coin = CharField(max_length=20, default="USD", blank=False, editable=False)
     private = models.BooleanField(default=True)
-    enterprise_id = models.ForeignKey(config.settings.base.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    developers = models.ManyToManyField(config.settings.base.AUTH_USER_MODEL, related_name='nft_projects')
+    enterprise_id = models.ForeignKey(config.settings.base.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+    developers = models.ManyToManyField(config.settings.base.AUTH_USER_MODEL, related_name='nft_projects', null=True, blank=True)
 
     class Meta:
         verbose_name = "NFTProjects"
