@@ -203,13 +203,22 @@ class ProjectCreateView(generic.CreateView):
 
 class ProjectUpdateView(generic.UpdateView):
     template_name = "sniper/project_update.html"
-    form_class = ProjectForm
 
     def get_queryset(self):
         return NFTProject.objects.all()
 
     def get_success_url(self):
         return reverse("sniper:project-detail", kwargs={"pk": self.get_object().id})
+
+    def get_form_class(self):
+        user = self.request.user
+        if user.is_authenticated:
+            if user.role == "Desarrollador":
+                return DeveloperProjectForm
+            elif user.role == "Empresa":
+                return EnterpriseProjectForm
+        # Default form class
+        return EnterpriseProjectForm
 
 
 class OrderUpdateView(generic.UpdateView):
