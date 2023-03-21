@@ -55,6 +55,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 @admin.register(Enterprise)
 class EnterpriseAdmin(admin.ModelAdmin):
+    model = Enterprise
     list_display = ('id', 'username', 'email', 'nit', 'role', 'allowed')
     list_editable = ('role', 'allowed')
     search_fields = ('username', 'email', 'nit')
@@ -62,6 +63,7 @@ class EnterpriseAdmin(admin.ModelAdmin):
 
 @admin.register(Investor)
 class InvestorAdmin(admin.ModelAdmin):
+    model = Investor
     list_display = ('id', 'username', 'email', 'role', 'allowed')
     list_editable = ('role', 'allowed')
     search_fields = ('username', 'email')
@@ -69,11 +71,12 @@ class InvestorAdmin(admin.ModelAdmin):
 
 @admin.register(Developer)
 class DeveloperAdmin(admin.ModelAdmin):
+    model = Developer
     list_display = ('id', 'username', 'email', 'role', 'allowed_private_projects')
     list_editable = ('role', 'allowed_private_projects')
     search_fields = ('username', 'email')
     list_filter = ('role', 'allowed_private_projects')
-    filter_horizontal = ('enterprise')
+    
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Order, OrderAdmin)
