@@ -65,7 +65,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         #user = authenticate(request, username=self.request.user.username, password=self.request.user.password, backend='django.contrib.auth.backends.ModelBackend')
         if self.request.user is not None:
             #user.backend = 'django.contrib.auth.backends.ModelBackend'
-            login(request, self.request.user)
+            #login(request, self.request.user)
             if self.request.user.role == "Desarrollador":
                 self.template_name = "dashboard/developer.html"
             elif self.request.user.role == "Persona Natural":
