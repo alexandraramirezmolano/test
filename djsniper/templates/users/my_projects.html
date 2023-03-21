@@ -5,6 +5,14 @@
 
 
 {% block container %}
+
+            {% if user.role != "Persona Natural" %}
+              <div class="d-flex align-rigth mb-2">
+                <a  href="{% url 'sniper:project-create' %}" type="button" class="btn btn-light w-100 fw-bold align-center">
+                    Crear proyecto
+                </a>
+              </div>
+            {% endif %}
             <div class="card" style="display: flex; flex-direction : row; justify-content: space-around; flex-wrap: wrap; height: 100%;">
               <!--<div class="card-body">
                       <div class="row">
