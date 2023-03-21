@@ -45,7 +45,7 @@ class Enterprise(User):
     """Enterprise user."""
 
     project = models.ManyToManyField(NFTProject)
-    role = models.CharField(max_length=20, choices=Role, default="Empresa", blank=True, editable=True)
+   
     class Meta:
         verbose_name = _("Enterprise")
         verbose_name_plural = _("Enterprises")
@@ -56,7 +56,7 @@ class Enterprise(User):
 
 class Investor(User):
     """Investor user."""
-    role = models.CharField(max_length=20, choices=Role, default="Persona Natural", blank=True, editable=True)
+    
     project = models.ManyToManyField(NFTProject)
     class Meta:
         verbose_name = _("Investor")
@@ -68,10 +68,11 @@ class Investor(User):
 
 class Developer(User):
     """Developer user."""
-    role = models.CharField(max_length=20, choices=Role, default="Desarrollador", blank=True, editable=True)
+    
     enterprise = models.ManyToManyField(Enterprise)
     project = models.ManyToManyField(NFTProject)
     allowed_private_projects = models.BooleanField(default=False)
+
     class Meta:
         verbose_name = _("Developer")
         verbose_name_plural = _("Developers")
