@@ -39,7 +39,7 @@ class UserAdmin(auth_admin.UserAdmin):
 class UserModelAdmin(admin.ModelAdmin):
     model = UserModel
     list_display = ["username", "name", "email",  "image", "nit", "allowed", "phone", "contact", "role", "display_projects"]
-    list_editable = ["image", "allowed", "phone", "nit", "contact", "role"]
+    list_editable = ["image", "allowed", "phone", "nit", "contact", "role", "display_projects"]
     list_filter = ["allowed", "role"]
     search_fields = ["username", "name", "email"]
     list_per_page = 15
