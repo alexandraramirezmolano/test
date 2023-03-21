@@ -1,9 +1,7 @@
 from django.db import models
 from django.db.models import CharField
 import uuid
-from django.contrib.auth import get_user_model
 
-User = get_user_model()
 
 class Category(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -30,8 +28,8 @@ class NFTProject(models.Model):
     description = models.CharField(max_length=500, null=True)
     coin = CharField(max_length=20, default="USD", blank=False, editable=False)
     private = models.BooleanField(default=True)
-    enterprise = models.ForeignKey(User, on_delete=models.CASCADE, related_name='nft_projects')
-    developers = models.ManyToManyField(User, related_name='contributed_nft_projects')
+    enterprise = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    developers = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='nft_projects')
 
     class Meta:
         verbose_name = "NFTProjects"
