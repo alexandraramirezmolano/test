@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import NFTProject, NFT, Category
+from .models import NFTProject, Category
 
-
+"""
 class NFTAdmin(admin.ModelAdmin):
     model = NFT
     list_display = ["nft_id", "rank", "rarity_score", "image"]
@@ -9,7 +9,7 @@ class NFTAdmin(admin.ModelAdmin):
     list_filter = ["rank", "rarity_score"]
     list_per_page = 15
     search_help_text = "Buscar por ranking o score"
-
+"""
 
 class CategoryAdmin(admin.ModelAdmin):
     model = Category
@@ -37,6 +37,6 @@ class NFTProjectAdmin(admin.ModelAdmin):
 
 admin.site.register(NFTProject, NFTProjectAdmin)
 
-admin.site.register(NFT, NFTAdmin)
+"""admin.site.register(NFT, NFTAdmin)"""
 
 admin.site.register(Category, CategoryAdmin)
