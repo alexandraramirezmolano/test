@@ -88,19 +88,10 @@ class ProjectListView(generic.ListView):
 
 class UserProjectsView(generic.ListView):
     template_name = "users/my_projects.html"
+    model = Order
 
-    def get_queryset(self):
-        user = self.request.user
-        if user.role == "Empresa":
-            model = NFTProject
-        elif user.role == "Persona Natural":
-            model = Order
-        else:
-            model = None
-        if model:
-            return model.objects.filter(user=user)
-        else:
-            return None
+    def __init__(self):
+        self.orders = Order.objects.all()
 
     def group_by_project(self):
         grouped_orders = {}
@@ -117,7 +108,6 @@ class UserProjectsView(generic.ListView):
                 filtered_orders.append(order)
                 grouped_objects = filtered_orders
         return print(grouped_objects)
-
 
 
 class UserBillingsView(generic.ListView):
