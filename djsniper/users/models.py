@@ -15,8 +15,6 @@ Role = (
     ('Desarrollador', 'Desarrollador')
 )
 
-
-
 class User(AbstractUser, PermissionsMixin):
     """Default user for djsniper."""
 
