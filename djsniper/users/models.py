@@ -19,18 +19,17 @@ class User(AbstractUser):
     """Default user for djsniper."""
 
     #: First and last name do not cover name patterns around the globe
-    name = CharField(_("Name of User"), blank=True, max_length=255)
-    first_name = CharField(max_length=30, null=True, blank=True)
-    last_name = CharField(max_length=30, null=True, blank=True)
-    nit = CharField(max_length=30, null=True)
-    image = ImageField(blank=True, null=True, upload_to='images/userimage')
-    edited = DateField(auto_now=True)
-    allowed = BooleanField(default=False)
-    project = ManyToManyField(NFTProject)
-    role = CharField(max_length=20, choices=Role, default="Persona Natural", blank=True, editable=True)
-    phone = CharField(max_length=30, null=True)
-    contact = CharField(max_length=50, null=True)
-    allowed_private_projects = BooleanField(default=False)
+    name = models.CharField(_("Name of User"), blank=True, max_length=255)
+    first_name = models.CharField(max_length=30, null=True, blank=True)
+    last_name = models.CharField(max_length=30, null=True, blank=True)
+    nit = models.CharField(max_length=30, null=True)
+    image = models.ImageField(blank=True, null=True, upload_to='images/userimage')
+    edited = models.DateField(auto_now=True)
+    allowed = models.BooleanField(default=False)
+    role = models.CharField(max_length=20, choices=Role, default="Persona Natural", blank=True, editable=True)
+    phone = models.CharField(max_length=30, null=True)
+    contact = models.CharField(max_length=50, null=True)
+    
 
     def get_absolute_url(self):
         """Get url for user's detail view.
@@ -40,6 +39,45 @@ class User(AbstractUser):
 
         """
         return reverse("users:detail", kwargs={"username": self.username})
+
+
+class Enterprise(User):
+    """Enterprise user."""
+
+    project = models.ManyToManyField(NFTProject)
+    role = models.CharField(max_length=20, choices=Role, default="Empresa", blank=True, editable=True)
+    class Meta:
+        verbose_name = _("Enterprise")
+        verbose_name_plural = _("Enterprises")
+
+    def __str__(self):
+        return self.username
+
+
+class Investor(User):
+    """Investor user."""
+    role = models.CharField(max_length=20, choices=Role, default="Persona Natural", blank=True, editable=True)
+    project = models.ManyToManyField(NFTProject)
+    class Meta:
+        verbose_name = _("Investor")
+        verbose_name_plural = _("Investors")
+
+    def __str__(self):
+        return self.username
+
+
+class Developer(User):
+    """Developer user."""
+    role = models.CharField(max_length=20, choices=Role, default="Desarrollador", blank=True, editable=True)
+    enterprise = models.ManyToManyField(Enterprise)
+    project = models.ManyToManyField(NFTProject)
+    allowed_private_projects = models.BooleanField(default=False)
+    class Meta:
+        verbose_name = _("Developer")
+        verbose_name_plural = _("Developers")
+
+    def __str__(self):
+        return self.username
 
 class Order(models.Model):
 

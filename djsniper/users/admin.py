@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
 from djsniper.users.forms import UserChangeForm, UserCreationForm
-from .models import User as UserModel, Order
+from .models import User as UserModel, Order, Enterprise, Developer, Investor
 
 User = get_user_model()
 
@@ -53,6 +53,30 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = ["nft", "approved"]
     list_per_page = 10
 
+@admin.register(Enterprise)
+class EnterpriseAdmin(admin.ModelAdmin):
+    list_display = ('id', 'username', 'email', 'nit', 'role', 'allowed')
+    list_editable = ('role', 'allowed')
+    search_fields = ('username', 'email', 'nit')
+    list_filter = ('role', 'allowed')
+
+@admin.register(Investor)
+class InvestorAdmin(admin.ModelAdmin):
+    list_display = ('id', 'username', 'email', 'role', 'allowed')
+    list_editable = ('role', 'allowed')
+    search_fields = ('username', 'email')
+    list_filter = ('role', 'allowed')
+
+@admin.register(Developer)
+class DeveloperAdmin(admin.ModelAdmin):
+    list_display = ('id', 'username', 'email', 'role', 'allowed_private_projects')
+    list_editable = ('role', 'allowed_private_projects')
+    search_fields = ('username', 'email')
+    list_filter = ('role', 'allowed_private_projects')
+    filter_horizontal = ('enterprise')
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Order, OrderAdmin)
+admin.site.register(Investor, InvestorAdmin)
+admin.site.register(Enterprise, EnterpriseAdmin)
+admin.site.register(Developer, DeveloperAdmin)
