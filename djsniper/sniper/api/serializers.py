@@ -1,4 +1,4 @@
-from djsniper.sniper.models import NFT, NFTAttribute, NFTProject, NFTTrait, Category
+from djsniper.sniper.models import NFT, NFTProject, Category
 from djsniper.users.models import Order
 from rest_framework import fields, filters, serializers
 
