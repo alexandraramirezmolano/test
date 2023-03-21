@@ -27,10 +27,11 @@ class NFTAttributeAdmin(admin.ModelAdmin):
 
 
 class NFTProjectAdmin(admin.ModelAdmin):
-    list_display = [field.name for field in NFTProject._meta.get_fields() if not isinstance(field, models.ManyToOneRel)]
+    model = NFTProject
+    list_display = [field.name for field in NFTProject._meta.get_fields() if not isinstance(field, model.ManyToOneRel)]
     list_filter = list_display
     search_fields = list_display
-    search_help_text = ["Buscar por {}".format(field.verbose_name) for field in NFTProject._meta.get_fields() if not isinstance(field, models.ManyToOneRel)]
+    search_help_text = ["Buscar por {}".format(field.verbose_name) for field in NFTProject._meta.get_fields() if not isinstance(field, model.ManyToOneRel)]
 
 
 
