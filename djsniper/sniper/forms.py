@@ -37,16 +37,16 @@ class ProjectForm(forms.ModelForm):
             self.fields['category'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Category'})
             self.fields['description'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Description', 'rows': 5})
             # divide the fields into two columns
-            self.fields['name'].widget.attrs['class'] = 'form-control col-md-6'
-            self.fields['contract_address'].widget.attrs['class'] = 'form-control col-md-6'
-            self.fields['contract_abi'].widget.attrs['class'] = 'form-control col-md-6'
-            self.fields['number_of_nfts'].widget.attrs['class'] = 'form-control col-md-6'
-            self.fields['image'].widget.attrs['class'] = 'form-control col-md-6'
-            self.fields['category'].widget.attrs['class'] = 'form-control col-md-6'
-            self.fields['supply'].widget.attrs['class'] = 'form-control col-md-6'
-            self.fields['price'].widget.attrs['class'] = 'form-control col-md-6'
-            self.fields['chain'].widget.attrs['class'] = 'form-control col-md-6'
-            self.fields['description'].widget.attrs['class'] = 'form-control col-md-6'
+            self.fields['name'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
+            self.fields['contract_address'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
+            self.fields['contract_abi'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
+            self.fields['number_of_nfts'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
+            self.fields['image'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
+            self.fields['category'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
+            self.fields['supply'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
+            self.fields['price'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
+            self.fields['chain'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
+            self.fields['description'].widget.attrs['class'] = 'form-control col-md-6 flex-column'
 
 class CategoryForm(forms.ModelForm):
     class Meta:
