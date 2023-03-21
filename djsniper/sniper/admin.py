@@ -28,12 +28,11 @@ class NFTAttributeAdmin(admin.ModelAdmin):
 
 class NFTProjectAdmin(admin.ModelAdmin):
     model = NFTProject
-
-    list_display = [field.name for field in NFTProject._meta.get_fields()]
-
-    # Optional: filter and search fields can be set to the same as list_display
+    list_display = [field.name for field in NFTProject._meta.get_fields()
+                    if not (field.many_to_many and field.auto_created)]
     list_filter = list_display
     search_fields = list_display
+
 
 
 
