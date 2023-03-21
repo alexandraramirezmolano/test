@@ -2,7 +2,6 @@ from django.db import models
 from django.db.models import CharField
 import uuid
 from config.settings.base import AUTH_USER_MODEL
-from django.contrib.auth.models import User
 
 class Category(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -28,7 +27,6 @@ class NFTProject(models.Model):
     chain = models.CharField(max_length=200, null=True)
     description = models.CharField(max_length=500, null=True)
     coin = CharField(max_length=20, default="USD", blank=False, editable=False)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     private = models.BooleanField(default=True)
 
     class Meta:
