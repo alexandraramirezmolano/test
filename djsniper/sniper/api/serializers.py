@@ -1,8 +1,8 @@
-from djsniper.sniper.models import NFT, NFTProject, Category
+from djsniper.sniper.models import NFTProject, Category
 from djsniper.users.models import Order
 from rest_framework import fields, filters, serializers
 
-
+"""
 class NFTSerializer(serializers.ModelSerializer):
     class Meta:
         model = NFT
@@ -11,6 +11,7 @@ class NFTSerializer(serializers.ModelSerializer):
         filters = ('rank', 'rarity_score')
         list_per_page = 15
         search_help_text = "Buscar por ranking o por score"
+"""
 
 class CategorySerializer(serializers.ModelSerializer):
 
