@@ -1,7 +1,7 @@
 import json
 import sys
 from operator import attrgetter
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from celery.result import AsyncResult
 from django.http import Http404, HttpResponseRedirect
 from django.http import HttpResponse
