@@ -55,6 +55,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 class EnterpriseAdmin(UserAdmin):
     model = Enterprise
+    list_display = ["username", "name", "email", "image", "nit", "allowed", "phone", "contact", "role"]
     list_editable = ["image", "allowed", "phone", "nit", "contact", "role"]
     list_filter = [ "allowed", "role"]
     search_fields = ["username", "name", "email"]
@@ -62,6 +63,7 @@ class EnterpriseAdmin(UserAdmin):
 
 class InvestorAdmin(UserAdmin):
     model = Investor
+    list_display = ["username", "name", "email", "image", "nit", "allowed", "phone", "contact", "role"]
     list_editable = ["image", "allowed", "phone", "nit", "contact", "role"]
     list_filter = [ "allowed", "role"]
     search_fields = ["username", "name", "email"]
@@ -69,6 +71,7 @@ class InvestorAdmin(UserAdmin):
 
 class DeveloperAdmin(UserAdmin):
     model = Developer
+    list_display = ["username", "name", "email", "image", "nit", "allowed", "phone", "contact", "role", "allowed_private_projects"]
     list_editable = ["image", "allowed", "phone", "nit", "contact", "role", "allowed_private_projects"]
     list_filter = [ "allowed", "role", "allowed_private_projects"]
     search_fields = ["username", "name", "email"]
