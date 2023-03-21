@@ -29,7 +29,7 @@ class NFTAttributeAdmin(admin.ModelAdmin):
 class NFTProjectAdmin(admin.ModelAdmin):
     model = NFTProject
 
-    def get_model_fields(self, model):
+    def get_model_fields(self, NFTProject):
         return model._meta.get_fields()
 
     #list_display = ["id", "name", "image", "supply", "price", "chain", "private"]
