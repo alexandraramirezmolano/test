@@ -41,7 +41,7 @@
                               </div>
                             </div>
                       {% for project in object_list %}
-                        {% if project.buyer.id is user.id %}
+                        {% if project.developer.id is user.id %}
                             <div class="row" style="height: 60px; padding:1rem;">
                               <div class="col-sm-1">
                                 <p class="mb-0">{{ project.id }}</p>
