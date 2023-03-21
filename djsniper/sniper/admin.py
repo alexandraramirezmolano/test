@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import NFTProject, NFT,  NFTAttribute, Category
+from .models import NFTProject, NFT, Category
 
 
 class NFTAdmin(admin.ModelAdmin):
