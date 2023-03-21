@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from django.db.models import OuterRef, Func, Subquery
-from djsniper.sniper.models import NFTProject, NFTAttribute, NFTTrait
+from djsniper.sniper.models import NFTProject, NFTAttribute
 
 
 class Command(BaseCommand):
@@ -11,12 +11,12 @@ class Command(BaseCommand):
         project = NFTProject.objects.get(id=project_id)
 
         # calculate sum of NFT trait types
-        trait_count_subquery = (
-            NFTTrait.objects.filter(attribute=OuterRef("id"))
-            .order_by()
-            .annotate(count=Func("id", function="Count"))
-            .values("count")
-        )
+        #trait_count_subquery = (
+            #NFTTrait.objects.filter(attribute=OuterRef("id"))
+        #    .order_by()
+        #    .annotate(count=Func("id", function="Count"))
+        #    .values("count")
+        #)
 
         #attributes = NFTAttribute.objects.all().annotate(
         #    trait_count=Subquery(trait_count_subquery)

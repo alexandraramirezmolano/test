@@ -40,13 +40,13 @@ class NFTProjectSerializer(serializers.ModelSerializer):
         search_help_text = "Buscar por nombre o por cantidad de bonos"
 
 
-class NFTTraitSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = NFTTrait
-        fields = '__all__'
-        filters = ["rarity_score"]
-        list_per_page = 15
-        search_help_text = ["Buscar por score"]
+#class NFTTraitSerializer(serializers.ModelSerializer):
+#    class Meta:
+#        model = NFTTrait
+#        fields = '__all__'
+#        filters = ["rarity_score"]
+#        list_per_page = 15
+#        search_help_text = ["Buscar por score"]
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:

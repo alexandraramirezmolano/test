@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import NFTProject, NFT, NFTTrait, NFTAttribute, Category
+from .models import NFTProject, NFT,  NFTAttribute, Category
 
 
 class NFTAdmin(admin.ModelAdmin):
@@ -32,17 +32,11 @@ class NFTProjectAdmin(admin.ModelAdmin):
 
 
 
-class NFTTraitAdmin(admin.ModelAdmin):
-    model = NFTTrait
-    list_display = ["rarity_score"]
-    list_filter = ["rarity_score"]
-    list_per_page = 15
-    search_fields = ["rarity_score"]
-    search_help_text = "Buscar por score"
+
 
 
 admin.site.register(NFTProject, NFTProjectAdmin)
-admin.site.register(NFTTrait, NFTTraitAdmin)
+
 admin.site.register(NFT, NFTAdmin)
 
 admin.site.register(Category, CategoryAdmin)

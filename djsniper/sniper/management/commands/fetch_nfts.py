@@ -33,10 +33,10 @@ class Command(BaseCommand):
                 nft_id=i, project=project#, image=data["image"].split("ipfs://")[1]
             )
             attributes = data["attributes"]
-            for attribute in attributes:
+            #for attribute in attributes:
                 #nft_attribute, created = NFTAttribute.objects.get_or_create(
                 #    project=project,
                 #    name=attribute["trait_type"],
                 #    value=attribute["value"],
                 #)
-                NFTTrait.objects.create(nft=nft) #, attribute=nft_attribute)
+                #NFTTrait.objects.create(nft=nft) #, attribute=nft_attribute)

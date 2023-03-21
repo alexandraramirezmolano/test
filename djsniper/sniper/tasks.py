@@ -7,7 +7,7 @@ from celery_progress.backend import ProgressRecorder
 
 from django.db.models import OuterRef, Func, Subquery
 
-from djsniper.sniper.models import NFTProject, NFT, NFTAttribute, NFTTrait
+from djsniper.sniper.models import NFTProject, NFT, NFTAttribute
 
 # https://polygon-mumbai.infura.io/v3/455905f17d0844778fff85d926a530e5
 
@@ -21,12 +21,12 @@ def rank_nfts_task(project_id):
     project = NFTProject.objects.get(id=project_id)
 
     # calculate sum of NFT trait types
-    trait_count_subquery = (
-        NFTTrait.objects.filter(attribute=OuterRef("id"))
-        .order_by()
-        .annotate(count=Func("id", function="Count"))
-        .values("count")
-    )
+    #trait_count_subquery = (
+    #    NFTTrait.objects.filter(attribute=OuterRef("id"))
+    #    .order_by()
+    #    .annotate(count=Func("id", function="Count"))
+    #    .values("count")
+    #)
 
     #attributes = NFTAttribute.objects.all().annotate(
     #    trait_count=Subquery(trait_count_subquery)
