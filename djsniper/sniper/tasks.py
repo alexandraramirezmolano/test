@@ -1,3 +1,4 @@
+"""
 import requests
 from time import sleep
 from web3.main import Web3
@@ -9,10 +10,10 @@ from django.db.models import OuterRef, Func, Subquery
 
 from djsniper.sniper.models import NFTProject, NFT, NFTAttribute
 
-# https://polygon-mumbai.infura.io/v3/455905f17d0844778fff85d926a530e5
+ https://polygon-mumbai.infura.io/v3/455905f17d0844778fff85d926a530e5
 
-#INFURA_PROJECT_ID = "455905f17d0844778fff85d926a530e5"
-#INFURA_ENDPOINT = f"https://goerli.infura.io/v3/{INFURA_PROJECT_ID}"
+INFURA_PROJECT_ID = "455905f17d0844778fff85d926a530e5"
+INFURA_ENDPOINT = f"https://goerli.infura.io/v3/{INFURA_PROJECT_ID}"
 
 INFURA_ENDPOINT = f"https://polygon-mumbai.g.alchemy.com/v2/qg82ocbBhqeF4CalJF9ZHHAFLn7SdK1U"
 
@@ -20,19 +21,19 @@ INFURA_ENDPOINT = f"https://polygon-mumbai.g.alchemy.com/v2/qg82ocbBhqeF4CalJF9Z
 def rank_nfts_task(project_id):
     project = NFTProject.objects.get(id=project_id)
 
-    # calculate sum of NFT trait types
-    #trait_count_subquery = (
-    #    NFTTrait.objects.filter(attribute=OuterRef("id"))
-    #    .order_by()
-    #    .annotate(count=Func("id", function="Count"))
-    #    .values("count")
-    #)
+     calculate sum of NFT trait types
+    trait_count_subquery = (
+        NFTTrait.objects.filter(attribute=OuterRef("id"))
+        .order_by()
+        .annotate(count=Func("id", function="Count"))
+        .values("count")
+    )
 
-    #attributes = NFTAttribute.objects.all().annotate(
-    #    trait_count=Subquery(trait_count_subquery)
-    #)
+    attributes = NFTAttribute.objects.all().annotate(
+        trait_count=Subquery(trait_count_subquery)
+    )
 
-    # Group traits under each type
+     Group traits under each type
     trait_type_map = {}
     for i in attributes:
         if i.name in trait_type_map.keys():
@@ -40,20 +41,20 @@ def rank_nfts_task(project_id):
         else:
             trait_type_map[i.name] = {i.value: i.trait_count}
 
-    # Calculate rarity
-    """
+     Calculate rarity
+
     [Rarity Score for a Trait Value] = 1 / ([Number of Items with that Trait Value] / [Total Number of Items in Collection])
-    """
+    
 
     for nft in project.nfts.all():
-        # fetch all traits for NFT
+         fetch all traits for NFT
         total_score = 0
 
         for nft_attribute in nft.nft_attributes.all():
             trait_name = nft_attribute.attribute.name
             trait_value = nft_attribute.attribute.value
 
-            # Number of Items with that Trait Value
+             Number of Items with that Trait Value
             trait_sum = trait_type_map[trait_name][trait_value]
 
             rarity_score = 1 / (trait_sum / project.number_of_nfts)
@@ -66,7 +67,7 @@ def rank_nfts_task(project_id):
         nft.rarity_score = total_score
         nft.save()
 
-    # Rank NFTs
+     Rank NFTs
     for index, nft in enumerate(project.nfts.all().order_by("-rarity_score")):
         nft.rank = index + 1
         nft.save()
@@ -89,18 +90,19 @@ def fetch_nfts_task(self, project_id):
             f"https://ipfs.io/ipfs/{ipfs_uri.split('ipfs://')[1]}"
         ).json()
         nft = NFT.objects.create(
-            nft_id=i, project=project#, image=data["image"].split("ipfs://")[1]
+            nft_id=i, project=project, image=data["image"].split("ipfs://")[1]
         )
-        #ttributes = data["attributes"]
-        #for attribute in attributes:
-        #nft_attribute, created = NFTAttribute.objects.get_or_create(
-        #       project=project,
-        #       name=project.name,
-        #       value=project.price,
-        #)
-        #NFTTrait.objects.create(nft=nft, attribute=nft_attribute)
+        ttributes = data["attributes"]
+        for attribute in attributes:
+        nft_attribute, created = NFTAttribute.objects.get_or_create(
+               project=project,
+               name=project.name,
+               value=project.price,
+        )
+        NFTTrait.objects.create(nft=nft, attribute=nft_attribute)
         progress_recorder.set_progress(i + 1, project.number_of_nfts)
         sleep(1)
 
-    # Call rank function
+     Call rank function
     rank_nfts_task(project_id)
+"""
