@@ -69,8 +69,7 @@ DJANGO_APPS = [
     "django.forms",
     "crispy_forms",
     "django.contrib.redirects",
-    "web3",
-    "sniper"
+    "web3"
 ]
 THIRD_PARTY_APPS = [
     "crispy_tailwind",
