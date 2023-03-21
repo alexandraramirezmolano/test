@@ -47,6 +47,9 @@ class User(AbstractUser, PermissionsMixin):
     contact = CharField(max_length=50, null=True)
     allowed_private_projects = BooleanField(default=False)
     objects = MyUserManager()
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    date_joined = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
         """Get url for user's detail view.
