@@ -50,6 +50,7 @@ class User(AbstractUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
+    USERNAME_FIELD = 'email'
 
     def get_absolute_url(self):
         """Get url for user's detail view.
