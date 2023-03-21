@@ -55,15 +55,15 @@ class OrderAdmin(admin.ModelAdmin):
 
 class EnterpriseAdmin(UserAdmin):
     model = Enterprise
-    list_display = ('id', 'username', 'email', 'is_staff', 'is_active')
+    list_display = ['id', 'username', 'email', 'is_staff', 'is_active']
 
 class InvestorAdmin(UserAdmin):
     model = Investor
-    list_display = ('id', 'username', 'email', 'is_staff', 'is_active')
+    list_display = ['id', 'username', 'email', 'is_staff', 'is_active']
 
 class DeveloperAdmin(UserAdmin):
     model = Developer
-    list_display = ('id', 'username', 'email', 'is_staff', 'is_active', 'allowed_private_projects')
+    list_display = ['id', 'username', 'email', 'is_staff', 'is_active', 'allowed_private_projects']
 
 admin.site.register(Enterprise, EnterpriseAdmin)
 admin.site.register(Investor, InvestorAdmin)
