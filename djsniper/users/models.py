@@ -15,7 +15,7 @@ Role = (
     ('Desarrollador', 'Desarrollador')
 )
 
-class User(AbstractUser, PermissionsMixin):
+class User(AbstractUser):
     """Default user for djsniper."""
 
     #: First and last name do not cover name patterns around the globe
