@@ -20,10 +20,6 @@ class CategoryAdmin(admin.ModelAdmin):
     search_help_text = "Buscar por nombre o última fecha de edición"
 
 
-class NFTAttributeAdmin(admin.ModelAdmin):
-    model = NFTAttribute
-    list_display = ["value"]
-    list_per_page = 15
 
 
 class NFTProjectAdmin(admin.ModelAdmin):
@@ -48,5 +44,5 @@ class NFTTraitAdmin(admin.ModelAdmin):
 admin.site.register(NFTProject, NFTProjectAdmin)
 admin.site.register(NFTTrait, NFTTraitAdmin)
 admin.site.register(NFT, NFTAdmin)
-admin.site.register(NFTAttribute, NFTAttributeAdmin)
+
 admin.site.register(Category, CategoryAdmin)
