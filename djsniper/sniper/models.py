@@ -28,7 +28,7 @@ class NFTProject(models.Model):
     chain = models.CharField(max_length=200, null=True)
     description = models.CharField(max_length=500, null=True)
     coin = CharField(max_length=20, default="USD", blank=False, editable=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     private = models.BooleanField(default=True)
 
     class Meta:
