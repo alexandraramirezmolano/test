@@ -15,7 +15,7 @@ urlpatterns = [
         "project/<pk>/delete/", views.ProjectDeleteView.as_view(), name="project-delete"
     ),
     #path("project/<pk>/clear/", views.ProjectClearView.as_view(), name="project-clear"),
-    path("project/<pk>/fetch-nfts/", views.FetchNFTsView.as_view(), name="fetch-nfts"),
+    #path("project/<pk>/fetch-nfts/", views.FetchNFTsView.as_view(), name="fetch-nfts"),
     #path("project/<pk>/order/", views.ProjectDetailView.as_view(), name="order"),},
     path("my-projects/<str:username>/", views.UserProjectsView.as_view(), name="my-projects"),
     path("my-payments/<str:username>/", views.UserPaymentsHistoryView.as_view(), name="my-payments"),
