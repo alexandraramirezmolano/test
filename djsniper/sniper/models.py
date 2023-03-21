@@ -28,6 +28,7 @@ class NFTProject(models.Model):
     description = models.CharField(max_length=500, null=True)
     coin = CharField(max_length=20, default="USD", blank=False, editable=False)
     private = models.BooleanField(default=True)
+    enterprise_id = models.IntegerField(default=0, blank=True, editable=False)
 
     class Meta:
         verbose_name = "NFTProjects"
