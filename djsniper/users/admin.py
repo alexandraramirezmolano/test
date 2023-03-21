@@ -31,7 +31,7 @@ class UserAdmin(auth_admin.UserAdmin):
     )
     list_display = ["username", "name", "email", "image", "nit", "allowed", "phone", "contact", "role", "allowed_private_projects"]
     list_editable = ["image", "allowed", "phone", "nit", "contact", "role", "allowed_private_projects"]
-    list_filter = ["is_superuser", "allowed", "role", "allowed_private_projects"]
+    list_filter = [ "allowed", "role", "allowed_private_projects"]
     search_fields = ["username", "name", "email"]
     list_per_page = 15
 
@@ -40,7 +40,7 @@ class UserModelAdmin(admin.ModelAdmin):
     model = UserModel
     list_display = ["username", "name", "email",  "image", "nit", "allowed", "phone", "contact", "role"]
     list_editable = ["image", "allowed", "phone", "nit", "contact", "role"]
-    list_filter = ["is_superuser", "allowed", "role"]
+    list_filter = ["allowed", "role"]
     search_fields = ["username", "name", "email"]
     list_per_page = 15
 
