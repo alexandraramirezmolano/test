@@ -57,17 +57,20 @@ class OrderAdmin(admin.ModelAdmin):
 class EnterpriseAdmin(admin.ModelAdmin):
     model = Enterprise
     list_display = '__all__'
+    filter_horizontal = ['project']
+
 
 @admin.register(Investor)
 class InvestorAdmin(admin.ModelAdmin):
     model = Investor
     list_display = '__all__'
+    filter_horizontal = ['project']
+
 
 @admin.register(Developer)
 class DeveloperAdmin(admin.ModelAdmin):
     model = Developer
-    list_display = '__all__'
-    
+    filter_horizontal = ['enterprise', 'project']
     
 
 admin.site.register(User, UserAdmin)
