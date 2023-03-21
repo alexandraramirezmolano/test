@@ -19,8 +19,8 @@
             {% csrf_token %}
             {{ form }}
             <div class="d-flex justify-content-evenly">
-                <a href="{% url 'sniper:my-projects' user.username %}" type="button" class="bg-danger-200 text-white-600 hover:bg-danger-300 hover:text-white-800">Cancelar</a>
-                <button class="bg-success-200 text-white-600 hover:bg-success-300 hover:text-white-800">Crear proyecto</button>
+                <a href="{% url 'sniper:my-projects' user.username %}" type="button" class="bg-danger-200 text-white-600 hover:bg-danger-300 hover:text-white-800 w-40">Cancelar</a>
+                <button class="bg-success-200 text-white-600 hover:bg-success-300 hover:text-white-800 w-40">Crear proyecto</button>
             </div>
           </form>
 
