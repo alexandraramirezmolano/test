@@ -18,9 +18,9 @@ class Command(BaseCommand):
             .values("count")
         )
 
-        attributes = NFTAttribute.objects.all().annotate(
-            trait_count=Subquery(trait_count_subquery)
-        )
+        #attributes = NFTAttribute.objects.all().annotate(
+        #    trait_count=Subquery(trait_count_subquery)
+        #)
 
         # Group traits under each type
         trait_type_map = {}

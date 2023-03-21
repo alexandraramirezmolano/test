@@ -28,9 +28,9 @@ def rank_nfts_task(project_id):
         .values("count")
     )
 
-    attributes = NFTAttribute.objects.all().annotate(
-        trait_count=Subquery(trait_count_subquery)
-    )
+    #attributes = NFTAttribute.objects.all().annotate(
+    #    trait_count=Subquery(trait_count_subquery)
+    #)
 
     # Group traits under each type
     trait_type_map = {}
@@ -93,12 +93,12 @@ def fetch_nfts_task(self, project_id):
         )
         #ttributes = data["attributes"]
         #for attribute in attributes:
-        nft_attribute, created = NFTAttribute.objects.get_or_create(
-               project=project,
-               name=project.name,
-               value=project.price,
-        )
-        NFTTrait.objects.create(nft=nft, attribute=nft_attribute)
+        #nft_attribute, created = NFTAttribute.objects.get_or_create(
+        #       project=project,
+        #       name=project.name,
+        #       value=project.price,
+        #)
+        #NFTTrait.objects.create(nft=nft, attribute=nft_attribute)
         progress_recorder.set_progress(i + 1, project.number_of_nfts)
         sleep(1)
 

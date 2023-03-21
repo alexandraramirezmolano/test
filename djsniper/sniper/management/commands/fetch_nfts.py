@@ -34,9 +34,9 @@ class Command(BaseCommand):
             )
             attributes = data["attributes"]
             for attribute in attributes:
-                nft_attribute, created = NFTAttribute.objects.get_or_create(
-                    project=project,
-                    name=attribute["trait_type"],
-                    value=attribute["value"],
-                )
+                #nft_attribute, created = NFTAttribute.objects.get_or_create(
+                #    project=project,
+                #    name=attribute["trait_type"],
+                #    value=attribute["value"],
+                #)
                 NFTTrait.objects.create(nft=nft) #, attribute=nft_attribute)

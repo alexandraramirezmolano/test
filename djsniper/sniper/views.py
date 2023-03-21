@@ -332,7 +332,7 @@ class ProjectClearView(SingleObjectMixin, generic.FormView):
     def form_valid(self, form):
         nft_project = self.get_object()
         nft_project.nfts.all().delete()
-        NFTAttribute.objects.filter(project=nft_project).delete()
+        #.objects.filter(project=nft_project).delete()
         return super().form_valid(form)
 
     def get_success_url(self):

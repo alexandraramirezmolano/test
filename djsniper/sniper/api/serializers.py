@@ -21,14 +21,14 @@ class CategorySerializer(serializers.ModelSerializer):
         list_per_page = 15
         search_help_text = "Buscar por nombre"
 
-class NFTAttributeSerializer(serializers.ModelSerializer):
+#class NFTAttributeSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = NFTAttribute
-        fields = '__all__'
-        filters = 'name'
-        list_per_page = 15
-        search_help_text = "Buscar por nombre"
+#    class Meta:
+#        model = NFTAttribute
+#        fields = '__all__'
+#        filters = 'name'
+#        list_per_page = 15
+#        search_help_text = "Buscar por nombre"
 
 
 class NFTProjectSerializer(serializers.ModelSerializer):
