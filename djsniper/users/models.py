@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, PermissionsMixin
 from django.db.models import CharField, EmailField, ImageField, DateField, AutoField, ManyToManyField, BooleanField, \
     ForeignKey, \
     PROTECT
@@ -16,7 +16,7 @@ Role = (
 )
 
 
-class User(AbstractUser):
+class User(AbstractUser, PermissionsMixing):
     """Default user for djsniper."""
 
     #: First and last name do not cover name patterns around the globe
