@@ -26,7 +26,8 @@ class EnterpriseProjectForm(forms.ModelForm):
         }
         
     def __init__(self, *args, **kwargs):
-        super(ProjectForm, self).__init__(*args, **kwargs)
+        super(EnterpriseProjectForm, self).__init__(*args, **kwargs)
+
         
         # update widget attributes
         self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nombre'})
@@ -68,7 +69,8 @@ class DeveloperProjectForm(forms.ModelForm):
         }
         
     def __init__(self, *args, **kwargs):
-        super(ProjectForm, self).__init__(*args, **kwargs)
+        super(DeveloperProjectForm, self).__init__(*args, **kwargs)
+
         
         # update widget attributes
         self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nombre'})
