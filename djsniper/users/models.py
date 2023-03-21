@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser, PermissionsMixin
+from django.contrib.auth.models import AbstractUser, PermissionsMixin, BaseUserManager
 from django.db.models import CharField, EmailField, ImageField, DateField, AutoField, ManyToManyField, BooleanField, \
     ForeignKey, \
     PROTECT
@@ -15,6 +15,20 @@ Role = (
     ('Desarrollador', 'Desarrollador')
 )
 
+class MyUserManager(BaseUserManager):
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('The Email field must be set')
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save()
+        return user
+
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        return self.create_user(email, password, **extra_fields)
 
 class User(AbstractUser, PermissionsMixin):
     """Default user for djsniper."""
@@ -32,6 +46,7 @@ class User(AbstractUser, PermissionsMixin):
     phone = CharField(max_length=30, null=True)
     contact = CharField(max_length=50, null=True)
     allowed_private_projects = BooleanField(default=False)
+    objects = MyUserManager()
 
     def get_absolute_url(self):
         """Get url for user's detail view.
