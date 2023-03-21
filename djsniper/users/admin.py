@@ -29,9 +29,9 @@ class UserAdmin(auth_admin.UserAdmin):
         ),
         (_("Important dates"), {"fields": ("last_login", "date_joined")}),
     )
-    list_display = ["username", "name", "email", "image", "nit", "allowed", "phone", "contact", "role", "allowed_private_projects"]
-    list_editable = ["image", "allowed", "phone", "nit", "contact", "role", "allowed_private_projects"]
-    list_filter = [ "allowed", "role", "allowed_private_projects"]
+    list_display = ["username", "name", "email", "image", "nit", "allowed", "phone", "contact", "role"]
+    list_editable = ["image", "allowed", "phone", "nit", "contact", "role"]
+    list_filter = [ "allowed", "role"]
     search_fields = ["username", "name", "email"]
     list_per_page = 15
 
@@ -55,16 +55,24 @@ class OrderAdmin(admin.ModelAdmin):
 
 class EnterpriseAdmin(UserAdmin):
     model = Enterprise
-    list_display = ['id', 'username', 'email', 'is_staff', 'is_active']
+    list_editable = ["image", "allowed", "phone", "nit", "contact", "role"]
+    list_filter = [ "allowed", "role"]
+    search_fields = ["username", "name", "email"]
+    list_per_page = 15
 
 class InvestorAdmin(UserAdmin):
     model = Investor
-    list_display = ['id', 'username', 'email', 'is_staff', 'is_active']
+    list_editable = ["image", "allowed", "phone", "nit", "contact", "role"]
+    list_filter = [ "allowed", "role"]
+    search_fields = ["username", "name", "email"]
+    list_per_page = 15
 
 class DeveloperAdmin(UserAdmin):
     model = Developer
-    list_display = ['id', 'username', 'email', 'is_staff', 'is_active']
-
+    list_editable = ["image", "allowed", "phone", "nit", "contact", "role", "allowed_private_projects"]
+    list_filter = [ "allowed", "role", "allowed_private_projects"]
+    search_fields = ["username", "name", "email"]
+    list_per_page = 15
 
 admin.site.register(Enterprise, EnterpriseAdmin)
 admin.site.register(Investor, InvestorAdmin)
