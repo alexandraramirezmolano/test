@@ -14,33 +14,7 @@
 {% block title %}Empresa: {{ object.username }}{% endblock %}
 
 {% block content %}
-<!--<div class="container">
 
-  <div class="row">
-    <div class="col-sm-12">
-
-      <h2>{{ object.username }}</h2>
-      {% if object.name %}
-        <p>{{ object.name }}</p>
-      {% endif %}
-    </div>
-  </div>
-
-{% if object == request.user %}
--- Action buttons --
-<div class="row">
-
-  <div class="col-sm-12">
-    <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">My Info</a>
-    <a class="btn btn-primary" href="{% url 'account_email' %}" role="button">E-Mail</a>
-    -- Your Stuff: Custom user template urls --
-  </div>
-
-</div>
--- End Action buttons --
-{% endif %}
-
-</div>-->
   <section style="">
     <div class="container py-3">
       <div class="row">
@@ -75,28 +49,28 @@
                   </button>
               </div>-->
               <div class="d-flex justify-content-left mb-2">
-                  <a href="#" type="button" class="btn btn-light w-100 fw-bold p-3 text-left">-->
+                  <a href="#" type="button" class="btn btn-light w-100 fw-bold p-3 text-left">
                     <img src="{% static 'images/dashboard/icons/usericon.png' %}" style="width:30px; height:30px; margin-right: 5rem;"/>
                     Perfil
                   </a>
               </div>
               <div class="d-flex justify-content-left mb-2">
-                  <!--<a href="{% url 'sniper:my-billings' user.username %}" type="button" class="btn btn-light w-100 fw-bold p-3 text-left">-->
+                  <a href="{% url 'sniper:my-billings' user.username %}" type="button" class="btn btn-light w-100 fw-bold p-3 text-left">
                     <img src="{% static 'images/dashboard/icons/billings.png' %}" style="width:30px; height:30px; margin-right: 2rem;" />
                     Facturaciones
-                  <!--</a>-->
+                  </a>
               </div>
               <div class="d-flex justify-content-left mb-2">
-                  <!--<a href="{% url 'sniper:my-payments' user.username %}" class="btn btn-light w-100 fw-bold p-3 text-left">-->
+                  <a href="{% url 'sniper:my-payments' user.username %}" class="btn btn-light w-100 fw-bold p-3 text-left">
                     <img src="{% static 'images/dashboard/icons/time-left.png' %}" style="width:30px; height:30px; "/>
                     Historial de pagos
-                  <!--</a>-->
+                  </a>
               </div>
               <div class="d-flex justify-content-left mb-2">
-                  <!--<a href="{% url 'users:update' %}" type="button" class="btn btn-light w-100 fw-bold p-3 text-left">-->
+                  <a href="{% url 'users:update' %}" type="button" class="btn btn-light w-100 fw-bold p-3 text-left">
                     <img src="{% static 'images/dashboard/icons/settings.png' %}" style="width:30px; height:30px; margin-right: 1rem;"/>
                     Configuraciones
-                  <!--</a>-->
+                  </a>
               </div>
 
             </div>
