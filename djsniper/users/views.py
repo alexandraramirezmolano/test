@@ -43,7 +43,7 @@ def login_view(request):
 
 
         if user is not None:
-            user.backend = 'django.contrib.auth.backends.ModelBackend'
+            #user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, user)
             if user.role == "Desarrollador":
                 return redirect('developer_home')
@@ -64,7 +64,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     def get(self, request, *args, **kwargs):
         user = authenticate(request, username=self.request.user.username, password=self.request.user.password, backend='django.contrib.auth.backends.ModelBackend')
         if self.request.user is not None:
-            user.backend = 'django.contrib.auth.backends.ModelBackend'
+            #user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, self.request.user)
             if self.request.user.role == "Desarrollador":
                 self.template_name = "dashboard/developer.html"
