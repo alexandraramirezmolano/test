@@ -30,7 +30,7 @@ class NFTProject(models.Model):
     private = models.BooleanField(default=True)
 
     class Meta:
-        verbose_name_plural = "NFTProjects"
+        verbose_name = "NFTProjects"
 
     def __str__(self):
         return self.name
