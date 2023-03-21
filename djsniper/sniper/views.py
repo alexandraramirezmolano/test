@@ -9,6 +9,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import generic
 from django.views.generic.detail import SingleObjectMixin, View
+from django.views.generic.list import ListView
 from django.views.generic.edit import FormMixin
 from django.contrib.auth.decorators import login_required, user_passes_test
 from djsniper.sniper.forms import ConfirmForm, EnterpriseProjectForm, DeveloperProjectForm
