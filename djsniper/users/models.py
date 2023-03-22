@@ -47,8 +47,8 @@ class Enterprise(User):
     project = models.ManyToManyField(NFTProject)
    
     class Meta:
-        verbose_name = _("Enterprise")
-        verbose_name_plural = _("Enterprises")
+        verbose_name = "Enterprise"
+        verbose_name_plural = "Enterprises"
 
     def __str__(self):
         return self.username
@@ -59,8 +59,8 @@ class Investor(User):
     
     project = models.ManyToManyField(NFTProject)
     class Meta:
-        verbose_name = _("Investor")
-        verbose_name_plural = _("Investors")
+        verbose_name = "Investor"
+        verbose_name_plural = "Investors"
 
     def __str__(self):
         return self.username
