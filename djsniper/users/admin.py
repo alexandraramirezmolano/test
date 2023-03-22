@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
 from djsniper.users.forms import UserChangeForm, UserCreationForm
-from .models import User as UserModel, Order, Enterprise, Developer, Investor
+from .models import User as UserModel, Order, Enterprise, Investor
 
 User = get_user_model()
 
@@ -73,16 +73,10 @@ class InvestorAdmin(UserAdmin):
     search_fields = ["username", "name", "email"]
     list_per_page = 15
 
-class DeveloperAdmin(UserAdmin):
-    model = Developer
-    list_display = ["username", "name", "email", "image", "nit", "allowed", "phone", "contact", "role", "allowed_private_projects"]
-    list_editable = ["image", "allowed", "phone", "nit", "contact", "role", "allowed_private_projects"]
-    list_filter = [ "allowed", "role", "allowed_private_projects"]
-    search_fields = ["username", "name", "email"]
-    list_per_page = 15
+
+
 
 admin.site.register(Enterprise, EnterpriseAdmin)
 admin.site.register(Investor, InvestorAdmin)
-admin.site.register(Developer, DeveloperAdmin)
 admin.site.register(User, UserAdmin)
 admin.site.register(Order, OrderAdmin)
