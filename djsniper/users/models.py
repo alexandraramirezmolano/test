@@ -65,21 +65,6 @@ class Investor(User):
     def __str__(self):
         return self.username
 
-
-class Developer(User):
-    """Developer user."""
-    
-    enterprise = models.ManyToManyField(Enterprise)
-    project = models.ManyToManyField(NFTProject)
-    allowed_private_projects = models.BooleanField(default=False)
-
-    class Meta:
-        verbose_name = _("Developer")
-        verbose_name_plural = _("Developers")
-
-    def __str__(self):
-        return self.username
-
 class Order(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=True)
