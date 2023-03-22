@@ -10,7 +10,7 @@ from djsniper.users import views as accounts_views
 
 urlpatterns = [
     path("", include("djsniper.sniper.urls", namespace="sniper")),
-    path("developer/", include("djsniper.developer.urls", namespace="developer")),
+    path("developer/", include("djsniper.developers.urls", namespace="developer")),
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
