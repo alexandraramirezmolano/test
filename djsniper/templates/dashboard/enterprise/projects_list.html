@@ -14,7 +14,7 @@
   <div class="card w-100" style="display: flex; flex-direction : row; justify-content: space-around; flex-wrap: wrap; height: fit-content;">
               <div class="card-body w-100">
                       <div class="row w-100">
-                          <div class="col-sm-1 text-info fw-bold">
+                          <div class="col-sm-2 text-info fw-bold">
                             Id
                           </div>
                           <div class="col-sm-2 text-info fw-bold">
@@ -26,20 +26,17 @@
                           <div class="col-sm-1 text-info fw-bold">
                             Bonos
                           </div>
-                         <div class="col-sm-1 text-info fw-bold">
+                         <div class="col-sm-2 text-info fw-bold">
                              Desarrollador
                           </div>
-                         <div class="col-sm-2 text-info fw-bold">
+                         <div class="col-sm-1 text-info fw-bold">
                             Privado
                          </div>
-                        <div class="col-sm-2 text-info fw-bold">
-                            
-                        </div>
                       </div>
                 {% for project in object_list %}
                   
                       <div class="row w-100" style="height: 40px;">
-                        <div class="col-sm-1">
+                        <div class="col-sm-2">
                           <p class="mb-0">{{ project.id }}</p>
                         </div>
                         <div class="col-sm-2">
@@ -51,7 +48,7 @@
                         <div class="col-sm-1">
                           <p class="text-muted mb-0">{{ project.supply }}</p>
                         </div>
-                        <div class="col-sm-1">
+                        <div class="col-sm-2">
                           <p class="text-muted mb-0">{{ project.developer.username }}</p>
                         </div>
                         {% if project.private %}
@@ -63,9 +60,7 @@
                               <p class="mb-0 text-danger fw-bold">No</p>
                             </div>
                         {% endif %}
-                        <div class="col-sm-2">
-
-                        </div>
+                        
                       </div>
                   
                 {% endfor %}
