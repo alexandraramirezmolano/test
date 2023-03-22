@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Developers</h1>
+  <ul>
+  {% for developer in object_list %}
+    <li>{{ developer.name }} - {{ developer.email }}</li>
+  {% empty %}
+    <li>No developers yet.</li>
+  {% endfor %}
+  </ul>
+{% endblock %}
