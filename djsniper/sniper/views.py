@@ -92,7 +92,7 @@ class EnterpriseProjectsView(LoginRequiredMixin, ListView):
     template_name = 'dashboard/enterprise/projects_list.html'
 
     def get_queryset(self):
-        return super().get_queryset().filter(developers=self.request.user)
+        return super().get_queryset().filter(enterprise=self.request.user.id)
 
 class UserProjectsView(generic.ListView):
     template_name = "users/my_projects.html"
