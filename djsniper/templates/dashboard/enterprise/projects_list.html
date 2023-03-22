@@ -10,10 +10,10 @@
       Crear proyecto
     </a>
 </div>
-<div style="overflow-x auto">
+<div style="overflow-x auto w-100">
   <div class="card w-100" style="display: flex; flex-direction : row; justify-content: space-around; flex-wrap: wrap; height: fit-content;">
-              <div class="card-body">
-                      <div class="row">
+              <div class="card-body w-100">
+                      <div class="row w-100">
                           <div class="col-sm-1 text-info fw-bold">
                             Id
                           </div>
@@ -38,7 +38,7 @@
                       </div>
                 {% for project in object_list %}
                   
-                      <div class="row" style="height: 40px;">
+                      <div class="row w-100" style="height: 40px;">
                         <div class="col-sm-1">
                           <p class="mb-0">{{ project.id }}</p>
                         </div>
