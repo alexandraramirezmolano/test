@@ -67,11 +67,11 @@ class UserDetailView(LoginRequiredMixin, DetailView):
             #user.backend = 'django.contrib.auth.backends.ModelBackend'
             #login(request, self.request.user)
             if self.request.user.role == "Desarrollador":
-                self.template_name = "dashboard/developer.html"
+                return redirect('developer_home')
             elif self.request.user.role == "Persona Natural":
-                self.template_name = "users/dashboard.html"
+                return redirect('investor_home')
             elif self.request.user.role == "Empresa":
-                self.template_name = "dashboard/enterprise.html"
+                return redirect('enterprise_home')
             else:
                 print(self.request.user.role)
         return super().get(request, *args, **kwargs)
