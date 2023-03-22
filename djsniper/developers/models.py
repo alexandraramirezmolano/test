@@ -12,8 +12,8 @@ class Developer(User):
     allowed_private_projects = models.BooleanField(default=False)
 
     class Meta:
-        verbose_name = _("Developer")
-        verbose_name_plural = _("Developers")
+        verbose_name = "Developer"
+        verbose_name_plural = "Developers"
 
     def __str__(self):
         return self.username
