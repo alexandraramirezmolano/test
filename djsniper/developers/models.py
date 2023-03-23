@@ -5,7 +5,7 @@ from djsniper.sniper.models import NFTProject
 # Create your models here.
 
 
-class Developer(models.Models):
+class Developer(models.Model):
     """Developer user."""
     
     enterprise = models.ManyToManyField(Enterprise)
