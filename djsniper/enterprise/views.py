@@ -9,8 +9,8 @@ class EnterpriseProjectsView(generic.ListView):
     template_name = "dashboard/enterprise/projects_list.html"
     model = NFTProject
 
-    def __init__(self):
-        self.projects = NFTProject.objects.all()
+    def get_queryset(self):
+        return NFTProject.objects.all()
 
 
     def filter_by_enteprise(self, enterprise=self.request.user.id):
