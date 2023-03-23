@@ -1,5 +1,6 @@
 from django.db import models
 from djsniper.users.models import User
+from djsniper.sniper.models import NFTProject
 # Create your models here.
 
 class Enterprise(User):
