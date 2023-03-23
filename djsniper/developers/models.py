@@ -5,12 +5,13 @@ from djsniper.sniper.models import NFTProject
 # Create your models here.
 
 
-class Developer(User):
+class Developer(models.Models):
     """Developer user."""
     
     enterprise = models.ManyToManyField(Enterprise)
     project = models.ManyToManyField(NFTProject)
     allowed_private_projects = models.BooleanField(default=False)
+    user = models.OneToOneField("users.User", on_delete=models.CASCADE, related_name="developer_profile")
 
     class Meta:
         verbose_name = "Developer"

@@ -19,7 +19,7 @@ class User(AbstractUser):
     """Default user for djsniper."""
 
     #: First and last name do not cover name patterns around the globe
-    name = models.CharField(_("Name of User"), blank=True, max_length=255)
+    name = models.CharField(_("Nombre de usuario"), blank=True, max_length=255)
     first_name = models.CharField(max_length=30, null=True, blank=True)
     last_name = models.CharField(max_length=30, null=True, blank=True)
     nit = models.CharField(max_length=30, null=True)
