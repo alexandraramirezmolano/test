@@ -30,11 +30,11 @@ class DeveloperDetailView(DetailView):
 
 class NFTProjectListView(ListView):
     model = NFTProject
-    template_name = 'project_list.html'
+    template_name = 'dashboard/developer/project_list.html'
     context_object_name = 'projects'
     ordering = ['-id']
 
 class NFTProjectDetailView(DetailView):
     model = NFTProject
-    template_name = 'project_detail.html'
+    template_name = 'dashboard/developer/project_detail.html'
     context_object_name = 'project'
