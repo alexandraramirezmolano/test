@@ -4,19 +4,21 @@ from djsniper.sniper.models import NFTProject
 from django.views.generic.list import ListView
 from django.views import generic
 
-
 class EnterpriseProjectsView(generic.ListView):
     template_name = "dashboard/enterprise/projects_list.html"
     model = NFTProject
 
-    def get_queryset(self, request):
-        return NFTProject.objects.all()
+    def get_queryset(self):
+        enterprise_id = self.request.user.id
+        if enterprise_id:
+            return self.model.objects.filter(enterprise_id=enterprise_id)
+        else:
+            return self.model.objects.all()
 
-
-    def filter_by_enteprise(self, enterprise=self.request.user.id):
+    def filter_by_enterprise(self, enterprise=None):
         filtered_projects = []
-        for project in self.projects:
-            if project.enterprise == enterprise:
+        queryset = self.get_queryset()
+        for project in queryset:
+            if project.enterprise_id == enterprise:
                 filtered_projects.append(project)
-                grouped_objects = filtered_projects
-        return print(grouped_objects)
+        return filtered_projects
