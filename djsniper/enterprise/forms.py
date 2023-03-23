@@ -30,9 +30,7 @@ class EnterpriseProjectForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(EnterpriseProjectForm, self).__init__(*args, **kwargs)
-        self.request = kwargs.pop('request', None)
-        # Set the current user ID as the default value for the enterprise field
-        self.fields['enterprise_id'].initial = self.request.user.id if self.request and self.request.user.is_authenticated else None
+        self.fields['enterprise'] = self.instance.user
         # Update widget attributes
         self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nombre'})
         self.fields['contract_address'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract Address'})
