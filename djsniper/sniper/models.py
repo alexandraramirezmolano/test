@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models import CharField
 import uuid
 import config
-from djsniper.users.models import User
+
 
 
 class Category(models.Model):
