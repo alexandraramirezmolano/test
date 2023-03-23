@@ -42,4 +42,4 @@ class EnterpriseProjectForm(forms.ModelForm):
         self.fields['chain'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Chain'})
         self.fields['contract_abi'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract ABI', 'rows': 5})
         self.fields['category'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Categoría'})
-        self.fields['description'].widget.attrs.update({'class': 'form-control
+        self.fields['description'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Descripción'})
