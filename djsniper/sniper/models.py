@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models import CharField
 import uuid
 import config
-from djsniper.users.models import Developer, Enterprise, User
+from djsniper.users.models import User
 
 
 class Category(models.Model):
@@ -30,8 +30,8 @@ class NFTProject(models.Model):
     description = models.CharField(max_length=500, null=True)
     coin = CharField(max_length=20, default="USD", blank=False, editable=False)
     private = models.BooleanField(default=True)
-    enterprise_id = models.ForeignKey(Enterprise, on_delete=models.CASCADE, null=True, blank=True, default=None)
-    developer = models.ForeignKey(Developer, on_delete=models.CASCADE, null=True, blank=True, default=None)
+    enterprise_id = models.ForeignKey(config.settings.base.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True, default=None)
+    developer = models.ForeignKey(config.settings.base.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True, default=None)
 
     class Meta:
         verbose_name = "Projects"
