@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import DeveloperListView, DeveloperCreateView, DeveloperUpdateView, DeveloperDetailView
+from .views import DeveloperListView, DeveloperCreateView, DeveloperUpdateView, DeveloperDetailView, NFTProjectListView, NFTProjectDetailView
 
 app_name = 'developers'
 
