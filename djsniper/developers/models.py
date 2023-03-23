@@ -8,8 +8,8 @@ from djsniper.sniper.models import NFTProject
 class Developer(User):
     """Developer user."""
     
-    enterprise = models.ManyToManyField(Enterprise)
-    project = models.ManyToManyField(NFTProject)
+    enterprise = models.ManyToManyField(Enterprise, related_name="empresa_desarrollador")
+    project = models.ManyToManyField(NFTProject, related_name="proyecto_desarrollador")
     allowed_private_projects = models.BooleanField(default=False)
 
     class Meta:
