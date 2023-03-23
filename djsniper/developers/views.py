@@ -5,6 +5,7 @@ from djsniper.sniper.models import NFTProject
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from .forms import DeveloperProjectForm
 
 
 class DeveloperListView(ListView):
@@ -37,8 +38,31 @@ class NFTProjectListView(ListView):
         queryset = super().get_queryset()
         return queryset.filter(developer=self.request.user.id)
 
-        
+
 class NFTProjectDetailView(DetailView):
     model = NFTProject
     template_name = 'dashboard/developer/project_detail.html'
     context_object_name = 'project'
+
+class NFTProjectUpdateView(LoginRequiredMixin, UpdateView):
+    model = NFTProject
+    template_name = 'dashboard/developer/project_update.html'
+    form_class = NFTProjectForm
+    success_url = reverse_lazy('project-list')
+
+    def get(self, request, *args, **kwargs):
+        # Ensure that only developers or enterprises that created the project can update it
+        project = self.get_object()
+        if request.user != project.developer and request.user != project.enterprise_id:
+            return redirect('project-list')
+        return super().get(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        # Set the developer or enterprise that made the update as the new creator
+        project = form.save(commit=False)
+        if not project.developer and self.request.user != project.enterprise_id:
+            project.developer = self.request.user
+        elif not project.enterprise_id and self.request.user != project.developer:
+            project.enterprise_id = self.request.user
+        project.save()
+        return super().form_valid(form)

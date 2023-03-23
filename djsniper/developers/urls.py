@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import DeveloperListView, DeveloperCreateView, DeveloperUpdateView, DeveloperDetailView, NFTProjectListView, NFTProjectDetailView
+from .views import DeveloperListView, DeveloperCreateView, DeveloperUpdateView, DeveloperDetailView, NFTProjectListView, NFTProjectDetailView, NFTProjectUpdateView
 
 app_name = 'developers'
 
@@ -10,5 +10,6 @@ urlpatterns = [
     path('<int:pk>/', DeveloperDetailView.as_view(), name='developer-detail'),
 
     path('projects-list/', NFTProjectListView.as_view(), name='project-list'),
-    path('project/<uuid:pk>/', NFTProjectDetailView.as_view(), name='project-detail')
+    path('project/<uuid:pk>/', NFTProjectDetailView.as_view(), name='project-detail'),
+    path('projects/<uuid:pk>/update/', NFTProjectUpdateView.as_view(), name='project-update'),
 ]
