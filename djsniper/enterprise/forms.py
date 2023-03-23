@@ -5,7 +5,7 @@ from django import forms
 class EnterpriseProjectForm(forms.ModelForm):
     class Meta:
         model = NFTProject
-        fields = ['name', 'contract_address', 'number_of_nfts', 'image', 'category', 'supply', 'price', 'chain', 'description', 'contract_abi', 'enterprise']
+        fields = ['name', 'contract_address', 'number_of_nfts', 'image', 'category', 'supply', 'price', 'chain', 'description', 'contract_abi', 'enterprise_id']
         labels = {
             'contract_address': 'Contrato',
             'contract_abi': 'ABI del Contrato',
@@ -30,7 +30,7 @@ class EnterpriseProjectForm(forms.ModelForm):
         self.request = kwargs.pop('request', None)
         # Get the current user ID and set it as the default value for the enterprise field
         user_id = self.request.user.id if hasattr(self.request, 'user') else None
-        self.fields['enterprise'] = user_id
+        self.fields['enterprise_id'] = user_id
 
         # update widget attributes
         self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nombre'})
@@ -44,4 +44,4 @@ class EnterpriseProjectForm(forms.ModelForm):
         self.fields['category'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Categor+ia'})
         self.fields['description'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Descripción', 'rows': 5})
         
-        self.fields['enterprise'].widget.attrs.update({'class': 'hidden'})
+        self.fields['enterprise_id'].widget.attrs.update({'class': 'hidden'})
