@@ -188,7 +188,6 @@ class OrderCreateView(generic.CreateView):
     def get_queryset(self):
         return Order.objects.all()
 
-
 class ProjectCreateView(generic.CreateView):
     template_name = "sniper/project_create.html"
 
@@ -210,7 +209,9 @@ class ProjectCreateView(generic.CreateView):
             if user.role == "Desarrollador":
                 return DeveloperProjectForm
             elif user.role == "Empresa":
-                return EnterpriseProjectForm
+                form_class = EnterpriseProjectForm
+                form_class.base_fields['enterprise_id'].initial = user.id
+                return form_class
         # Default form class
         return EnterpriseProjectForm
 
