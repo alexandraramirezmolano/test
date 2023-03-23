@@ -2,6 +2,7 @@ from django.shortcuts import render
 from djsniper.sniper.models import NFTProject
 # Create your views here.
 from django.views.generic.list import ListView
+from django.views import generic
 
 
 class EnterpriseProjectsView(generic.ListView):
