@@ -44,4 +44,3 @@ class EnterpriseProjectForm(forms.ModelForm):
         self.fields['category'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Categor+ia'})
         self.fields['description'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Descripción', 'rows': 5})
         
-        self.fields['enterprise_id'].widget.attrs.update({'class': 'hidden'})
