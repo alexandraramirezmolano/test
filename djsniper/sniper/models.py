@@ -32,6 +32,7 @@ class NFTProject(models.Model):
     private = models.BooleanField(default=True)
     enterprise_id = models.ForeignKey(config.settings.base.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True, default=None, related_name="empresa")
     developer = models.ForeignKey(config.settings.base.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True, default=None, related_name="desarrollador")
+    approved = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = "Projects"
