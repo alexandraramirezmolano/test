@@ -31,7 +31,8 @@ class EnterpriseProjectForm(forms.ModelForm):
         self.request = kwargs.pop('request', None)
         # Get the current user ID and set it as the default value for the enterprise field
         user_id = self.request.user.id if hasattr(self.request, 'user') else None
-        self.fields['enterprise_id'] = user_id
+        self.fields['enterprise_id'].widget = HiddenInput()
+        self.fields['enterprise_id'].initial = user_id
 
         # update widget attributes
         self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nombre'})
