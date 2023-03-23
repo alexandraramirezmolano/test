@@ -61,10 +61,5 @@ class NFTProjectUpdateView(LoginRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         # Set the developer or enterprise that made the update as the new creator
-        project = form.save(commit=False)
-        if not project.developer and self.request.user != project.enterprise_id:
-            project.developer = self.request.user
-        elif not project.enterprise_id and self.request.user != project.developer:
-            project.enterprise_id = self.request.user
-        project.save()
-        return super().form_valid(form)
+        project = form.save()
+        
