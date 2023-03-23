@@ -88,7 +88,8 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "djsniper.users",
     "djsniper.sniper",
-    "djsniper.developers"
+    "djsniper.developers",
+    "djsniper.enterprise"
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

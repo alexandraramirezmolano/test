@@ -41,19 +41,6 @@ class User(AbstractUser):
         return reverse("users:detail", kwargs={"username": self.username})
 
 
-class Enterprise(User):
-    """Enterprise user."""
-
-    project = models.ManyToManyField(NFTProject)
-   
-    class Meta:
-        verbose_name = "Enterprise"
-        verbose_name_plural = "Enterprises"
-
-    def __str__(self):
-        return self.username
-
-
 class Investor(User):
     """Investor user."""
     

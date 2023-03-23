@@ -57,13 +57,6 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = ["nft", "approved"]
     list_per_page = 10
 
-class EnterpriseAdmin(UserAdmin):
-    model = Enterprise
-    list_display = ["username", "name", "email", "image", "nit", "allowed", "phone", "contact", "role"]
-    list_editable = ["image", "allowed", "phone", "nit", "contact", "role"]
-    list_filter = [ "allowed", "role"]
-    search_fields = ["username", "name", "email"]
-    list_per_page = 15
 
 class InvestorAdmin(UserAdmin):
     model = Investor
@@ -74,9 +67,6 @@ class InvestorAdmin(UserAdmin):
     list_per_page = 15
 
 
-
-
-admin.site.register(Enterprise, EnterpriseAdmin)
 admin.site.register(Investor, InvestorAdmin)
 admin.site.register(User, UserAdmin)
 admin.site.register(Order, OrderAdmin)

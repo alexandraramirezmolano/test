@@ -12,9 +12,10 @@ from django.views.generic.detail import SingleObjectMixin, View
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormMixin
 from django.contrib.auth.decorators import login_required, user_passes_test
-from djsniper.sniper.forms import ConfirmForm, EnterpriseProjectForm, DeveloperProjectForm
+from djsniper.sniper.forms import ConfirmForm,  DeveloperProjectForm
 from djsniper.sniper.models import NFTProject, Category
 #from djsniper.sniper.tasks import fetch_nfts_task
+from djsniper.enterprise.forms import EnterpriseProjectForm
 from rest_framework import viewsets
 from djsniper.sniper.api import serializers
 from djsniper.users.forms import OrderCreationForm, OrderUpdateForm
@@ -193,7 +194,10 @@ class ProjectCreateView(generic.CreateView):
 
     def form_valid(self, form):
         instance = form.save()
-        return redirect("sniper:project-detail", pk=instance.id)
+        if user.role == "Desarrollador":
+            pass
+        elif user.role == "Empresa":
+            return redirect("sniper:enterprise-projects", username=self.request.user.username)
 
     def get_queryset(self):
         return NFTProject.objects.all()
