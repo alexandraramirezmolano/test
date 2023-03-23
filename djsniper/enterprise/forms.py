@@ -5,7 +5,7 @@ from django import forms
 class EnterpriseProjectForm(forms.ModelForm):
     class Meta:
         model = NFTProject
-        fields = ['name', 'contract_address', 'number_of_nfts', 'image', 'category', 'supply', 'price', 'chain', 'description', 'contract_abi']
+        fields = ['name', 'contract_address', 'number_of_nfts', 'image', 'category', 'supply', 'price', 'chain', 'description', 'contract_abi', 'enterprise']
         labels = {
             'contract_address': 'Contrato',
             'contract_abi': 'ABI del Contrato',
@@ -44,3 +44,4 @@ class EnterpriseProjectForm(forms.ModelForm):
         self.fields['category'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Categor+ia'})
         self.fields['description'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Descripción', 'rows': 5})
         
+        self.fields['enterprise'].widget.attrs.update({'class': 'hidden'})
