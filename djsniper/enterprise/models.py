@@ -6,7 +6,7 @@ class Enterprise(models.Model):
     """Enterprise user."""
 
     project = models.ManyToManyField(NFTProject)
-    user = models.OneToOneField("users.User", on_delete=models.CASCADE, related_name="developer_profile")
+    user = models.OneToOneField("users.User", on_delete=models.CASCADE, related_name="enterprise_profile")
    
     class Meta:
         verbose_name = "Enterprise"
