@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
 from djsniper.users.forms import UserChangeForm, UserCreationForm
-from .models import User as UserModel, Order, Enterprise, Investor
+from .models import User as UserModel, Order, Investor
 
 User = get_user_model()
 
@@ -29,7 +29,8 @@ class UserAdmin(auth_admin.UserAdmin):
         ),
         (_("Important dates"), {"fields": ("last_login", "date_joined")}),
     )
-    list_display = ["username", "name", "email", "image", "nit", "allowed", "phone", "contact", "role"]
+    #list_display = ["username", "name", "email", "image", "nit", "allowed", "phone", "contact", "role"]
+    list_display = '__all__'
     list_editable = ["image", "allowed", "phone", "nit", "contact", "role"]
     list_filter = [ "allowed", "role"]
     search_fields = ["username", "name", "email"]
@@ -38,7 +39,8 @@ class UserAdmin(auth_admin.UserAdmin):
 
 class UserModelAdmin(admin.ModelAdmin):
     model = UserModel
-    list_display = ["username", "name", "email",  "image", "nit", "allowed", "phone", "contact", "role", "display_projects"]
+    #list_display = ["username", "name", "email",  "image", "nit", "allowed", "phone", "contact", "role", "display_projects"]
+    list_display = '__all__'
     list_editable = ["image", "allowed", "phone", "nit", "contact", "role", "display_projects"]
     list_filter = ["allowed", "role"]
     search_fields = ["username", "name", "email"]
