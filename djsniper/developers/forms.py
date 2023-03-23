@@ -3,7 +3,7 @@ from djsniper.sniper.models import NFTProject, Category
 
 
 class DeveloperProjectForm(forms.ModelForm):
-    enterprise = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+    developer = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
 
     class Meta:
         model = NFTProject
