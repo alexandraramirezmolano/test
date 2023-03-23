@@ -3,6 +3,7 @@ from django import forms
 
 
 class EnterpriseProjectForm(forms.ModelForm):
+    enterprise_id = forms.CharField(widget=forms.HiddenInput())
     class Meta:
         model = NFTProject
         fields = ['name', 'contract_address', 'number_of_nfts', 'image', 'category', 'supply', 'price', 'chain', 'description', 'contract_abi', 'enterprise_id']
@@ -31,7 +32,7 @@ class EnterpriseProjectForm(forms.ModelForm):
         self.request = kwargs.pop('request', None)
         # Get the current user ID and set it as the default value for the enterprise field
         user_id = self.request.user.id if hasattr(self.request, 'user') else None
-        self.fields['enterprise_id'].widget = HiddenInput()
+     
         self.fields['enterprise_id'].initial = user_id
 
         # update widget attributes
