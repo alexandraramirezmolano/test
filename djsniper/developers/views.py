@@ -48,7 +48,7 @@ class NFTProjectDetailView(DetailView):
 class NFTProjectUpdateView(LoginRequiredMixin, UpdateView):
     model = NFTProject
     template_name = 'dashboard/developer/project_update.html'
-    form_class = NFTProjectForm
+    form_class = DeveloperProjectForm
     success_url = reverse_lazy('developers:project-list')
 
     def get(self, request, *args, **kwargs):
