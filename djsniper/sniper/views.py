@@ -193,6 +193,7 @@ class ProjectCreateView(generic.CreateView):
     template_name = "sniper/project_create.html"
 
     def form_valid(self, form):
+        user = self.request.user
         instance = form.save()
         if user.role == "Desarrollador":
             pass
@@ -211,6 +212,7 @@ class ProjectCreateView(generic.CreateView):
                 return EnterpriseProjectForm
         # Default form class
         return EnterpriseProjectForm
+
 
 
 class ProjectUpdateView(generic.UpdateView):
