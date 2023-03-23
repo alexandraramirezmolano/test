@@ -55,9 +55,7 @@ class NFTProjectUpdateView(LoginRequiredMixin, UpdateView):
     def get(self, request, *args, **kwargs):
         # Ensure that only developers or enterprises that created the project can update it
         project = self.get_object()
-        if request.user != project.developer and request.user != project.enterprise_id:
-            return redirect('project-list')
-        return super().get(request, *args, **kwargs)
+        
 
     def form_valid(self, form):
         # Set the developer or enterprise that made the update as the new creator
