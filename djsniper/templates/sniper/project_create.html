@@ -6,6 +6,7 @@
       <div class="card p-2 flex-column">
           <form class="form flex-column" method="post">
             {% csrf_token %}
+            <input type="hidden" name="enterprise_id" value="{{ request.user.id }}">
             {{ form }}
             <div class="d-flex justify-content-evenly">
                 <a href="{% url 'enterprise:enterprise-projects' user.id %}" type="button" class="bg-danger-200 text-white-600 hover:bg-danger-300 hover:text-white-800 w-40">Cancelar</a>
