@@ -1,4 +1,5 @@
 from djsniper.sniper.models import NFTProject
+from django import forms
 
 class EnterpriseProjectForm(forms.ModelForm):
     class Meta:
