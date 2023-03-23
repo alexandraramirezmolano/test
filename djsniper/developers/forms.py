@@ -7,7 +7,7 @@ class DeveloperProjectForm(forms.ModelForm):
 
     class Meta:
         model = NFTProject
-        fields = ['name', 'contract_address', 'number_of_nfts', 'image', 'category', 'supply', 'price', 'chain', 'description', 'contract_abi', 'enterprise']
+        fields = ['name', 'contract_address', 'number_of_nfts', 'image', 'category', 'supply', 'price', 'chain', 'description', 'contract_abi', 'developer']
         labels = {
             'contract_address': 'Contrato',
             'contract_abi': 'ABI del Contrato',
@@ -31,7 +31,7 @@ class DeveloperProjectForm(forms.ModelForm):
         super(DeveloperProjectForm, self).__init__(*args, **kwargs)
 
         # set the initial value for the enterprise field
-        self.fields['enterprise'] = self.instance.user
+        self.fields['developer'] = self.instance.user
 
         # update widget attributes
         self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nombre'})
