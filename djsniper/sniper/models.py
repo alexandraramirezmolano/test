@@ -32,47 +32,7 @@ class NFTProject(models.Model):
     developers = models.ManyToManyField(config.settings.base.AUTH_USER_MODEL, related_name='nft_projects', null=True, blank=True)
 
     class Meta:
-        verbose_name = "NFTProjects"
+        verbose_name = "Projects"
 
     def __str__(self):
         return self.name
-    
-
-"""
-class NFT(models.Model):
-    project = models.ForeignKey(
-        NFTProject, on_delete=models.CASCADE, related_name="nfts"
-    )
-    rarity_score = models.FloatField(null=True)
-    nft_id = models.PositiveIntegerField()
-    image = models.ImageField(null=True)
-    rank = models.PositiveIntegerField(null=True)
-
-    def __str__(self):
-        return f"{self.project.name}: {self.nft_id}"
-
-"""
-#class NFTAttribute(models.Model):
-#    project = models.ForeignKey(
-#        NFTProject, on_delete=models.CASCADE, related_name="attributes"
-#    )
-#    name = models.CharField(max_length=50)
-#    value = models.CharField(max_length=100)
-
-#    def __str__(self) -> str:
-#        return f"{self.name}: {self.value}"
-
-
-#class NFTTrait(models.Model):
-#    nft = models.ForeignKey(
-#        NFT, on_delete=models.CASCADE, related_name="nft_attributes"
-#    )
-#    attribute = models.ForeignKey(
-#        NFTAttribute, on_delete=models.CASCADE, related_name="traits"
-#    )
-#    rarity_score = models.FloatField(null=True)
-
-#    def __str__(self) -> str:
-#        return f"{self.attribute.name}: {self.attribute}"
-
-

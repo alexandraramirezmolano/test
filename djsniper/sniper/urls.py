@@ -5,7 +5,7 @@ app_name = "sniper"
 
 urlpatterns = [
     path("", views.HomeCategoriesListView.as_view(), name="home"),
-    path("projects/", views.ProjectListView.as_view(), name="projects"),
+    path("list/", views.ProjectListView.as_view(), name="projects"),
     path("create/", views.ProjectCreateView.as_view(), name="project-create"),
     path("project/<pk>/", views.ProjectDetailView.as_view(), name="project-detail"),
     path(
