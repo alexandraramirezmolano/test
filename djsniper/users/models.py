@@ -40,9 +40,9 @@ class User(AbstractUser):
         """
         return reverse("users:detail", kwargs={"username": self.username})
 
-
+"""
 class Enterprise(User):
-    """Enterprise user."""
+   
 
     project = models.ManyToManyField(NFTProject)
    
@@ -55,8 +55,7 @@ class Enterprise(User):
         return self.username
 
 class Developer(User):
-    """Developer user."""
-    
+    Developer user
     enterprise = models.ManyToManyField(Enterprise)
     project = models.ManyToManyField(NFTProject)
     allowed_private_projects = models.BooleanField(default=False)
@@ -70,7 +69,7 @@ class Developer(User):
         return self.username
 
 class Investor(User):
-    """Investor user."""
+    
     
     project = models.ManyToManyField(NFTProject)
     class Meta:
@@ -79,6 +78,7 @@ class Investor(User):
 
     def __str__(self):
         return self.username
+"""
 
 class Order(models.Model):
 
