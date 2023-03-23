@@ -190,6 +190,7 @@ class OrderCreateView(generic.CreateView):
 
 class ProjectCreateView(generic.CreateView):
     template_name = "sniper/project_create.html"
+    form_class = EnterpriseProjectForm
 
     def form_valid(self, form):
         user = self.request.user
@@ -203,17 +204,11 @@ class ProjectCreateView(generic.CreateView):
     def get_queryset(self):
         return NFTProject.objects.all()
 
-    def get_form_class(self):
-        user = self.request.user
-        if user.is_authenticated:
-            if user.role == "Desarrollador":
-                return DeveloperProjectForm
-            elif user.role == "Empresa":
-                form_class = EnterpriseProjectForm
-                form_class.base_fields['enterprise_id'].initial = user.id
-                return form_class
-        # Default form class
-        return EnterpriseProjectForm
+    def get_form_kwargs(self):
+        kwargs = super(ProjectCreateView, self).get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
+
 
 
 

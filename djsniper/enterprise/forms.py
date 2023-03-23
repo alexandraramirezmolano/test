@@ -29,6 +29,7 @@ class EnterpriseProjectForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
+        request = kwargs.pop('request')
         super(EnterpriseProjectForm, self).__init__(*args, **kwargs)
         self.fields['enterprise_id'].initial = request.user.id
         # Update widget attributes
@@ -41,6 +42,4 @@ class EnterpriseProjectForm(forms.ModelForm):
         self.fields['chain'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Chain'})
         self.fields['contract_abi'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract ABI', 'rows': 5})
         self.fields['category'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Categoría'})
-        self.fields['description'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Descripción', 'rows': 5})
-
-        
+        self.fields['description'].widget.attrs.update({'class': 'form-control
