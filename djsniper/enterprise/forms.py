@@ -5,7 +5,7 @@ from django import forms
 class EnterpriseProjectForm(forms.ModelForm):
     class Meta:
         model = NFTProject
-        fields = ['name', 'contract_address', 'number_of_nfts', 'image', 'category', 'supply', 'price', 'chain', 'description', 'contract_abi', 'enterprise_id']
+        fields = ['name', 'contract_address', 'number_of_nfts', 'image', 'category', 'supply', 'price', 'chain', 'description', 'contract_abi']
         labels = {
             'contract_address': 'Contrato',
             'contract_abi': 'ABI del Contrato',
