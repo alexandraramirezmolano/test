@@ -32,9 +32,7 @@
                          <div class="col-sm-2 text-info fw-bold">
                             Privado
                          </div>
-                         <div class="col-sm-2 text-info fw-bold">
-                          Privado
-                       </div>
+                         
                       </div>
                 {% for project in object_list %}
                   
@@ -63,15 +61,7 @@
                               <p class="mb-0 text-danger fw-bold">No</p>
                             </div>
                         {% endif %}
-                        {% if project.private %}
-                            <div class="col-sm-2">
-                              <p class=" mb-0 text-success fw-bold">Sí</p>
-                            </div>
-                        {% else %}
-                            <div class="col-sm-2">
-                              <p class="mb-0 text-danger fw-bold">No</p>
-                            </div>
-                        {% endif %}
+                        
                         
                       </div>
                   
