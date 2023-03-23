@@ -67,6 +67,7 @@ class Developer(User):
 
     def __str__(self):
         return self.username
+"""
 
 class Investor(User):
     
@@ -78,8 +79,7 @@ class Investor(User):
 
     def __str__(self):
         return self.username
-"""
-
+        
 class Order(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=True)
