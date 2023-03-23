@@ -1,3 +1,20 @@
 from django.shortcuts import render
-
+from djsniper.sniper.models import NFTProject
 # Create your views here.
+
+
+class EnterpriseProjectsView(generic.ListView):
+    template_name = "dashboard/enterprise/projects_list.html"
+    model = NFTProject
+
+    def __init__(self):
+        self.projects = NFTProject.objects.all()
+
+
+    def filter_by_enteprise(self, enterprise=self.request.user.id):
+        filtered_projects = []
+        for project in self.projects:
+            if project.enterprise == enterprise:
+                filtered_projects.append(project)
+                grouped_objects = filtered_projects
+        return print(grouped_objects)

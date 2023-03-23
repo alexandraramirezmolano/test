@@ -2,18 +2,7 @@
 {% load tailwind_filters %}
 
 {% block container %}
-<!--<div class="card">-->
-    <!--<h1 class="text-3xl font-bold leading-tight text-gray-900">
-        Create Project
-    </h1>-->
 
-    <!--<form class="mt-3" method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button
-            class="bg-gray-200 text-gray-600 hover:bg-gray-200 hover:text-gray-800 shadow rounded px-3 py-2">Submit</button>
-    </form>-->
-  <!--<div class="col-md-12 col-lg-4 mb-4 mb-lg-0">-->
       <div class="card p-2 flex-column">
           <form class="form flex-column" method="post">
             {% csrf_token %}
@@ -25,9 +14,5 @@
           </form>
 
       </div>
-  <!--</div>-->
-
-
-<!--</div>-->
 
 {% endblock container %}

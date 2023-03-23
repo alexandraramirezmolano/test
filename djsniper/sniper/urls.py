@@ -14,7 +14,6 @@ urlpatterns = [
     path(
         "project/<pk>/delete/", views.ProjectDeleteView.as_view(), name="project-delete"
     ),
-    path('enterprise-projects/<str:username>', views.EnterpriseProjectsView.as_view(), name='enterprise-projects'),
     path("my-projects/<str:username>/", views.UserProjectsView.as_view(), name="my-projects"),
     path("my-payments/<str:username>/", views.UserPaymentsHistoryView.as_view(), name="my-payments"),
     path("my-billings/<str:username>/", views.UserBillingsView.as_view(), name="my-billings"),
