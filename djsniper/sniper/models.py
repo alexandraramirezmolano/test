@@ -2,8 +2,8 @@ from django.db import models
 from django.db.models import CharField
 import uuid
 import config
-from djsniper.developers.models import Developer
-from djsniper.enterprise.models import Enterprise
+from djsniper.users.models import Developer, Enterprise, User
+
 
 class Category(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
