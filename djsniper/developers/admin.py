@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Developer
+from djsniper.users.models import Developer
 from djsniper.users.admin import UserAdmin
 # Register your models here.
 class DeveloperAdmin(UserAdmin):

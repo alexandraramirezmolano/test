@@ -1,5 +1,5 @@
 from django.contrib import admin
-from djsniper.developers.models import Developer
+from djsniper.users.models import Enterprise
 from djsniper.users.admin import UserAdmin
 from .models import Enterprise
 
