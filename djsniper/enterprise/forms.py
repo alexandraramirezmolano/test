@@ -27,7 +27,7 @@ class EnterpriseProjectForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(EnterpriseProjectForm, self).__init__(*args, **kwargs)
-        
+        self.request = kwargs.pop('request', None)
         # Get the current user ID and set it as the default value for the enterprise field
         user_id = self.request.user.id if hasattr(self.request, 'user') else None
         self.fields['enterprise'] = forms.IntegerField(widget=forms.HiddenInput(), initial=user_id)
