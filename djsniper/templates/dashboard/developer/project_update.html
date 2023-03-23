@@ -1,0 +1,18 @@
+{% extends "dashboard/developer.html" %}
+{% load tailwind_filters %}
+
+{% block container %}
+
+      <div class="card p-2 flex-column">
+          <form class="form flex-column" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <div class="d-flex justify-content-evenly">
+                <a href="{% url 'developers:project-list' %}" type="button" class="bg-danger-200 text-white-600 hover:bg-danger-300 hover:text-white-800 w-40">Cancelar</a>
+                <button class="bg-success-200 text-white-600 hover:bg-success-300 hover:text-white-800 w-40">Guardar Cambios</button>
+            </div>
+          </form>
+
+      </div>
+
+{% endblock container %}
