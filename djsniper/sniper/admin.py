@@ -25,7 +25,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class NFTProjectAdmin(admin.ModelAdmin):
     model = NFTProject
 
-    list_display = ['id', 'name', 'number_of_nfts', 'category', 'supply', 'price', 'chain', 'description', 'coin', 'private']
+    list_display = ['id', 'name', 'number_of_nfts', 'category', 'supply', 'price', 'chain', 'description', 'coin', 'private', 'approved']
 
     list_filter = list_display
     search_fields = list_display
