@@ -19,7 +19,7 @@ class User(AbstractUser):
     """Default user for djsniper."""
 
     #: First and last name do not cover name patterns around the globe
-    name = models.CharField(_("Nombre de usuario"), blank=True, max_length=255)
+    name = models.CharField(_("Name of User"), blank=True, max_length=255)
     first_name = models.CharField(max_length=30, null=True, blank=True)
     last_name = models.CharField(max_length=30, null=True, blank=True)
     nit = models.CharField(max_length=30, null=True)
@@ -40,6 +40,34 @@ class User(AbstractUser):
         """
         return reverse("users:detail", kwargs={"username": self.username})
 
+
+class Enterprise(User):
+    """Enterprise user."""
+
+    project = models.ManyToManyField(NFTProject)
+   
+   
+    class Meta:
+        verbose_name = "Enterprise"
+        verbose_name_plural = "Enterprises"
+
+    def __str__(self):
+        return self.username
+
+class Developer(User):
+    """Developer user."""
+    
+    enterprise = models.ManyToManyField(Enterprise)
+    project = models.ManyToManyField(NFTProject)
+    allowed_private_projects = models.BooleanField(default=False)
+    
+
+    class Meta:
+        verbose_name = "Developer"
+        verbose_name_plural = "Developers"
+
+    def __str__(self):
+        return self.username
 
 class Investor(User):
     """Investor user."""
