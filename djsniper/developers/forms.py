@@ -28,7 +28,7 @@ class DeveloperProjectForm(forms.ModelForm):
         }
         
     def __init__(self, *args, **kwargs):
-        super(EnterpriseProjectForm, self).__init__(*args, **kwargs)
+        super(DeveloperProjectForm, self).__init__(*args, **kwargs)
 
         # set the initial value for the enterprise field
         self.fields['enterprise'] = self.instance.user
