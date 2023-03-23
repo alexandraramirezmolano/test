@@ -1,6 +1,6 @@
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
 from django.urls import reverse_lazy
-from djsniper.users.models import Developer
+from .models import Developer
 
 class DeveloperListView(ListView):
     model = Developer
