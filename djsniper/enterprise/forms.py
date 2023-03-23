@@ -5,7 +5,7 @@ from django import forms
 class EnterpriseProjectForm(forms.ModelForm):
     class Meta:
         model = NFTProject
-        fields = ['name', 'contract_address', 'number_of_nfts', 'image', 'category', 'supply', 'price', 'chain', 'description', 'contract_abi']
+        fields = ['name', 'contract_address', 'number_of_nfts', 'image', 'category', 'supply', 'price', 'chain', 'description', 'contract_abi', 'enterprise_id']
         labels = {
             'contract_address': 'Contrato',
             'contract_abi': 'ABI del Contrato',
@@ -17,6 +17,7 @@ class EnterpriseProjectForm(forms.ModelForm):
             'price': 'Precio unitario',
             'chain': 'Cadena',
             'description': 'Descripción',
+            'enterprise_id' : 'enterprise_id'
         }
         error_messages = {
             'name': {'required': 'Por favor, introduzca un nombre para el proyecto.'},
@@ -41,6 +42,6 @@ class EnterpriseProjectForm(forms.ModelForm):
         self.fields['price'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Precio unitario'})
         self.fields['chain'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Chain'})
         self.fields['contract_abi'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract ABI', 'rows': 5})
-        self.fields['category'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Categor+ia'})
+        self.fields['category'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Categoría'})
         self.fields['description'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Descripción', 'rows': 5})
         
