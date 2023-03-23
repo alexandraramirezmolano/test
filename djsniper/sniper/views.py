@@ -198,7 +198,7 @@ class ProjectCreateView(generic.CreateView):
         if user.role == "Desarrollador":
             pass
         elif user.role == "Empresa":
-            return redirect("sniper:enterprise-projects", username=self.request.user.username)
+            return redirect("enterprise:enterprise-projects", username=self.request.user.username)
 
     def get_queryset(self):
         return NFTProject.objects.all()
