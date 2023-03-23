@@ -50,6 +50,7 @@ class NFTProjectUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'dashboard/developer/project_update.html'
     form_class = DeveloperProjectForm
     success_url = reverse_lazy('developers:project-list')
+ 
 
     def get(self, request, *args, **kwargs):
         # Ensure that only developers or enterprises that created the project can update it

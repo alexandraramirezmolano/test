@@ -31,8 +31,7 @@ class DeveloperProjectForm(forms.ModelForm):
         super(DeveloperProjectForm, self).__init__(*args, **kwargs)
 
         # set the initial value for the enterprise field
-        self.fields['developer'] = self.instance.user
-
+        self.fields['developer'].initial = self.instance.developer.user.id
         # update widget attributes
         self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nombre'})
         self.fields['contract_address'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract Address'})
