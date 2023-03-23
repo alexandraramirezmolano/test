@@ -3,9 +3,11 @@ from .models import NFTProject, Category
 
 
 class EnterpriseProjectForm(forms.ModelForm):
+    enterprise = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+
     class Meta:
         model = NFTProject
-        fields = ['name', 'contract_address', 'number_of_nfts', 'image', 'category', 'supply', 'price', 'chain', 'description', 'contract_abi']
+        fields = ['name', 'contract_address', 'number_of_nfts', 'image', 'category', 'supply', 'price', 'chain', 'description', 'contract_abi', 'enterprise']
         labels = {
             'contract_address': 'Contrato',
             'contract_abi': 'ABI del Contrato',
@@ -28,7 +30,9 @@ class EnterpriseProjectForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(EnterpriseProjectForm, self).__init__(*args, **kwargs)
 
-        
+        # set the initial value for the enterprise field
+        self.fields['enterprise'].initial = self.instance.enterprise_id
+
         # update widget attributes
         self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nombre'})
         self.fields['contract_address'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract Address'})
@@ -44,6 +48,7 @@ class EnterpriseProjectForm(forms.ModelForm):
         # divide the fields into two columns
         for field_name in self.fields:
             self.fields[field_name].widget.attrs['class'] = 'form-control col-md-6 flex-column'
+
 
 class DeveloperProjectForm(forms.ModelForm):
     class Meta:
