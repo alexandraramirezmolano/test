@@ -1,6 +1,7 @@
 from djsniper.sniper.models import NFTProject
 from django import forms
 
+
 class EnterpriseProjectForm(forms.ModelForm):
     class Meta:
         model = NFTProject
@@ -23,11 +24,14 @@ class EnterpriseProjectForm(forms.ModelForm):
             'price': {'required': 'Por favor ingrese un precio para el proyecto'},
             'description': {'required': 'Por favor ingrese una descripción para el proyecto'},
         }
-        
+
     def __init__(self, *args, **kwargs):
         super(EnterpriseProjectForm, self).__init__(*args, **kwargs)
-
         
+        # Get the current user ID and set it as the default value for the enterprise field
+        user_id = self.request.user.id if hasattr(self.request, 'user') else None
+        self.fields['enterprise'] = forms.IntegerField(widget=forms.HiddenInput(), initial=user_id)
+
         # update widget attributes
         self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nombre'})
         self.fields['contract_address'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract Address'})
