@@ -1,6 +1,7 @@
 from django.contrib import admin
 from djsniper.developers.models import Developer
 from djsniper.users.admin import UserAdmin
+from .models import Enterprise
 
 class EnterpriseAdmin(UserAdmin):
     model = Enterprise
