@@ -12,7 +12,7 @@ from django.views.generic.detail import SingleObjectMixin, View
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormMixin
 from django.contrib.auth.decorators import login_required, user_passes_test
-from djsniper.sniper.forms import  DeveloperProjectForm
+from djsniper.developers.forms import  DeveloperProjectForm
 from djsniper.sniper.models import NFTProject, Category
 #from djsniper.sniper.tasks import fetch_nfts_task
 from djsniper.enterprise.forms import EnterpriseProjectForm
