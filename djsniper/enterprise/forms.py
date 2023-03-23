@@ -44,6 +44,3 @@ class EnterpriseProjectForm(forms.ModelForm):
         self.fields['category'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Categor+ia'})
         self.fields['description'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Descripción', 'rows': 5})
         
-        # divide the fields into two columns
-        for field_name in self.fields:
-            self.fields[field_name].widget.attrs['class'] = 'form-control col-md-6 flex-column'
