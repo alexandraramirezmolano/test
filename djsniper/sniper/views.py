@@ -194,6 +194,7 @@ class ProjectCreateView(generic.CreateView):
 
     def form_valid(self, form):
         user = self.request.user
+        instance.enterprise = user
         instance = form.save()
         if user.role == "Desarrollador":
             pass
