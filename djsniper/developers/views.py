@@ -46,34 +46,14 @@ class NFTProjectDetailView(DetailView):
     template_name = 'dashboard/developer/project_detail.html'
     context_object_name = 'project'
 
-class NFTProjectUpdateView(LoginRequiredMixin, UpdateView):
-    model = NFTProject
-    template_name = 'dashboard/developer/project_update.html'
-    form_class = DeveloperProjectForm
-    success_url = reverse_lazy('developers:project-list')
- 
-
-    def get(self, request, *args, **kwargs):
-        # Ensure that only developers or enterprises that created the project can update it
-        project = self.get_object()
-        if request.user != project.developer_id and request.user != project.enterprise_id:
-            return redirect('project-list')
-        return super().get(request, *args, **kwargs)
-
-    def form_valid(self, form):
-        # Set the developer or enterprise that made the update as the new creator
-        project = form.save()
-        if not project.developer_id and self.request.user != project.enterprise_id:
-            project.developer_id = self.request.user
-        elif not project.enterprise_id and self.request.user != project.developer_id:
-            project.enterprise_id = self.request.user
-        project.save()
-
-        return redirect("developer:project-list")
+class ProjectUpdateView(UpdateView):
+    model = Project
+    form_class = ProjectForm
+    template_name = 'developers/project_form.html'
 
     def get_form_kwargs(self):
-        kwargs = super(ProjectCreateView, self).get_form_kwargs()
-        kwargs['request'] = self.request
+        kwargs = super(ProjectUpdateView, self).get_form_kwargs()
+        kwargs['developer_id'] = self.kwargs.get('developer_id')
         return kwargs
 
 class ProjectCreateView(generic.CreateView):
