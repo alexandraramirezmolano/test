@@ -23,7 +23,7 @@ class DeveloperProjectForm(forms.ModelForm):
             #'chain': 'Cadena',
             'description': 'Descripción',
             'enterprise_id': 'Empresa',
-            
+            'developer_id' : ''
         }
         error_messages = {
             'name': {'required': 'Por favor, introduzca un nombre para el proyecto.'},
