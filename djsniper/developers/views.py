@@ -50,6 +50,13 @@ class ProjectUpdateView(UpdateView):
     form_class = DeveloperProjectForm
     template_name = 'dashboard/developer/project_update.html'
 
+    def form_valid(self, form):
+        user = self.request.user
+        
+        instance = form.save()
+    
+        return redirect("developer:project-list")
+
 
     def get_queryset(self):
         return NFTProject.objects.all()
