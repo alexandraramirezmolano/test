@@ -6,7 +6,7 @@
 
 {% block container %}
 <div class="d-flex align-right mb-2">
-  <a   href="{% url 'developer:project-create' %}" type="button" class="btn btn-success w-10 fw-bold align-center">
+  <a   href="{% url 'developer:project-create' %}" type="button" class="btn btn-success w-10 fw-light align-center">
     Crear proyecto
   </a>
   <h5 class="fw-light align-left ml-5">Proyectos Asignados</h5>
@@ -15,25 +15,25 @@
   <div class="card w-100" style="display: flex; flex-direction : row; justify-content: space-around; flex-wrap: wrap; height: fit-content;">
               <div class="card-body w-100 overflow-x" style="height: fit-content;">
                       <div class="row w-100">
-                          <div class="col-sm-2 text-info fw-bold">
+                          <div class="col-sm-2 text-info fw-light">
                             Id
                           </div>
-                          <div class="col-sm-2 text-info fw-bold">
+                          <div class="col-sm-2 text-info fw-light">
                             Proyecto
                           </div>
-                         <div class="col-sm-2 text-info fw-bold">
+                         <div class="col-sm-2 text-info fw-light">
                             Categoría
                           </div>
-                          <div class="col-sm-1 text-info fw-bold">
+                          <div class="col-sm-1 text-info fw-light">
                             Bonos
                           </div>
-                         <div class="col-sm-2 text-info fw-bold">
+                         <div class="col-sm-2 text-info fw-light">
                             Empresa
                           </div>
-                         <div class="col-sm-1 text-info fw-bold">
+                         <div class="col-sm-1 text-info fw-light">
                             Privado
                          </div>
-                         <div class="col-sm-1 text-info fw-bold">
+                         <div class="col-sm-1 text-info fw-light">
                             Aprobado
                         </div>
                       </div>
@@ -58,20 +58,20 @@
                             </div>
                             {% if project.private %}
                                 <div class="col-sm-1">
-                                  <p class=" mb-0 text-success fw-bold">Sí</p>
+                                  <p class=" mb-0 text-success fw-light">Sí</p>
                                 </div>
                             {% else %}
                                 <div class="col-sm-1">
-                                  <p class="mb-0 text-danger fw-bold">No</p>
+                                  <p class="mb-0 text-danger fw-light">No</p>
                                 </div>
                             {% endif %}
                             {% if project.approved %}
                                 <div class="col-sm-1">
-                                  <p class=" mb-0 text-success fw-bold">Sí</p>
+                                  <p class=" mb-0 text-success fw-light">Sí</p>
                                 </div>
                             {% else %}
                                 <div class="col-sm-1">
-                                  <p class="mb-0 text-danger fw-bold">No</p>
+                                  <p class="mb-0 text-danger fw-light">No</p>
                                 </div>
                             {% endif %}
                             
