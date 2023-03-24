@@ -190,6 +190,7 @@ class OrderCreateView(generic.CreateView):
 
 class ProjectCreateView(generic.CreateView):
 
+    fields = '__all__'
     def form_valid(self, form):
         user = self.request.user
         
