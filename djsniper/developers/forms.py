@@ -47,6 +47,5 @@ class DeveloperProjectForm(forms.ModelForm):
         #self.fields['contract_abi'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract ABI', 'rows': 5})
         self.fields['category'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Categoría'})
         self.fields['description'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Descripción'})
-        self.fields['developer_id'].widget.attrs.update({'class': 'form-control','placeholder': 'Descripción','type': 'hidden'})
-
+        self.fields['developer_id'].widget.attrs.update({'class': 'form-control','placeholder': 'Descripción','hidden': True})
         self.fields['enterprise_id'].widget.attrs.update({'class': 'form-control'})
