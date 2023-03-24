@@ -50,6 +50,10 @@ class ProjectUpdateView(UpdateView):
     form_class = DeveloperProjectForm
     template_name = 'dashboard/developer/project_update.html'
 
+
+    def get_queryset(self):
+        return NFTProject.objects.all()
+        
     def get_form_kwargs(self):
         kwargs = super(ProjectUpdateView, self).get_form_kwargs()
         kwargs['request'] = self.request
