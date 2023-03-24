@@ -57,7 +57,6 @@ class ProjectUpdateView(UpdateView):
     def get_form_kwargs(self):
         kwargs = super(ProjectUpdateView, self).get_form_kwargs()
         kwargs['request'] = self.request
-        kwargs['developer_id'] = self.kwargs.get('developer_id')
         return kwargs
 
 class ProjectCreateView(generic.CreateView):
