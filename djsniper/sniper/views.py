@@ -197,7 +197,7 @@ class ProjectCreateView(generic.CreateView):
         
         instance = form.save()
         if user.role == "Desarrollador":
-            pass
+            return redirect("developers:project-list", username=self.request.user.username)
         elif user.role == "Empresa":
             return redirect("enterprise:enterprise-projects", username=self.request.user.username)
 
