@@ -10,7 +10,7 @@ class DeveloperProjectForm(forms.ModelForm):
 
     class Meta:
         model = NFTProject
-        fields = ['name', 'contract_address', 'number_of_nfts', 'image', 'category', 'supply', 'price', 'chain', 'description', 'contract_abi', 'developer_id', 'enterprise_id']
+        fields = ['name', 'contract_address', 'number_of_nfts', 'image', 'category', 'supply', 'price', 'chain', 'description', 'contract_abi', 'developer', 'enterprise_id']
         labels = {
             'contract_address': 'Contrato',
             'contract_abi': 'ABI del Contrato',
@@ -47,4 +47,4 @@ class DeveloperProjectForm(forms.ModelForm):
         self.fields['category'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Categoría'})
         self.fields['description'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Descripción'})
         self.fields['developer_id'].widget.attrs.update({'class': 'form-control','placeholder': 'Descripción','style': 'display: none'})
-        self.fields['enterprise_id'].widget.attrs.update({'class': 'form-control'})
+        self.fields['enterprise'].widget.attrs.update({'class': 'form-control'})
