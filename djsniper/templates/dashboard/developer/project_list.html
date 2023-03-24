@@ -1,4 +1,4 @@
-{% extends "dashboard/enterprise.html" %}
+{% extends "dashboard/developer.html" %}
 {% load static %}
 {% load humanize %}
 {% block title %}User: {{ object.username }}{% endblock %}
@@ -54,7 +54,7 @@
                               <p class="text-muted mb-0">{{ project.supply }}</p>
                             </div>
                             <div class="col-sm-2">
-                              <p class="text-muted mb-0">{{ project.empresa.username }}</p>
+                              <p class="text-muted mb-0">{{ project.enterprise.username }}</p>
                             </div>
                             {% if project.private %}
                                 <div class="col-sm-1">
