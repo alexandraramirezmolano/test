@@ -17,31 +17,26 @@
 
             <h2 class="text-center text-success mb-5">Inicia sesión en Gaya Live</h2>
 
-            <!--<div class="form-outline mb-4">
-              <input type="email" id="typeEmailX-2" class="form-control form-control-lg" placeholder="Email" />
-              <label class="form-label" for="typeEmailX-2"></label>
-            </div>
-
-            <div class="form-outline mb-4">
-              <input type="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="Contraseña"/>
-              <label class="form-label" for="typePasswordX-2"></label>
-            </div>-->
             <form class="login" method="POST" action="{% url 'account_login' %}">
               {% csrf_token %}
-              {{ form|crispy }}
+              <div class="form-group">
+                {{ form.username|as_crispy_field }}
+              </div>
+              <div class="form-group">
+                {{ form.password|as_crispy_field }}
+              </div>
               {% if redirect_field_value %}
               <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
               {% endif %}
-              <!-- Checkbox -->
-              <p>¿Has olvidado tu contraseña? Recupérala  <a href="#" style="text-decoration: none;" class="text-success"> aquí </a></p>
-              <button class="primaryAction btn btn-success btn-lg mb-2" type="submit" style="width: 100%">{% translate "Sign In" %}</button>
-
+              <div class="form-group">
+                <p>¿Has olvidado tu contraseña? Recupérala  <a href="#" style="text-decoration: none;" class="text-success"> aquí </a></p>
+              </div>
+              <button class="btn btn-success btn-block btn-lg mb-2" type="submit">{% translate "Sign In" %}</button>
               <hr class="hr">
-
-              <p class="text-gray mb-2">¿Aún no tienes una cuenta?</p>
-
-              <!--<a href="{{ signup_url }}" style="text-decoration : none; " class="text-success fw-bold"> {% translate "Sign Up" %} </a>-->
-              <a href="{% url 'sniper:choose' %}" style="text-decoration : none;" class="text-success fw-bold">{% translate "Sign Up" %}</a>
+              <div class="form-group">
+                <p class="text-gray mb-2">¿Aún no tienes una cuenta?</p>
+                <a href="{% url 'sniper:choose' %}" style="text-decoration : none;" class="text-success fw-bold">{% translate "Sign Up" %}</a>
+              </div>
             </form>
           </div>
         </div>
@@ -49,4 +44,5 @@
     </div>
   </div>
 </section>
+
 {% endblock %}
