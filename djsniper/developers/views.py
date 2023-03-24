@@ -79,7 +79,7 @@ class ProjectCreateView(generic.CreateView):
         
         instance = form.save()
     
-        return redirect("developer:project-list", username=self.request.user.username)
+        return redirect("developer:project-list")
 
     def get_queryset(self):
         return NFTProject.objects.all()
