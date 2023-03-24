@@ -10,6 +10,7 @@
               <input type="hidden" name="enterprise_id" value="{{ user.id }}">
             {% elif user.role == "Desarrollador" %}
               <input type="hidden" name="developer_id" value="{{ user.id }}">
+              <input type="" name="enterprise_id" value="">
             {% endif %}
             {{ form }}
             <div class="d-flex justify-content-evenly">
