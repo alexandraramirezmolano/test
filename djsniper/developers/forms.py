@@ -10,7 +10,7 @@ class DeveloperProjectForm(forms.ModelForm):
 
     class Meta:
         model = NFTProject
-        fields = ['name','image', 'category', 'supply', 'price', 'description', 'enterprise_id']
+        fields = ['name','image', 'category', 'supply', 'price', 'description', 'enterprise_id', 'developer_id']
         labels = {
             #'contract_address': 'Contrato',
             #'contract_abi': 'ABI del Contrato',
@@ -22,7 +22,8 @@ class DeveloperProjectForm(forms.ModelForm):
             'price': 'Precio unitario',
             #'chain': 'Cadena',
             'description': 'Descripción',
-            'enterprise_id': 'Empresa'
+            'enterprise_id': 'Empresa',
+            
         }
         error_messages = {
             'name': {'required': 'Por favor, introduzca un nombre para el proyecto.'},
@@ -34,7 +35,7 @@ class DeveloperProjectForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         request = kwargs.pop('request')
         super(DeveloperProjectForm, self).__init__(*args, **kwargs)
-        #self.fields['developer_id'].initial = request.user.id
+        self.fields['developer_id'].initial = request.user.id
         # Update widget attributes
         self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nombre'})
         #self.fields['contract_address'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract Address'})
@@ -46,5 +47,5 @@ class DeveloperProjectForm(forms.ModelForm):
         #self.fields['contract_abi'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract ABI', 'rows': 5})
         self.fields['category'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Categoría'})
         self.fields['description'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Descripción'})
-        #self.fields['developer_id'].widget.attrs.update({'class': 'form-control','placeholder': 'Descripción','style': 'display: none'})
-        self.fields['enterprise_id'].widget.attrs.update({'class': 'form-control', 'style': 'display: none'})
+        self.fields['developer_id'].widget.attrs.update({'class': 'form-control','placeholder': 'Descripción','style': 'display: none'})
+        self.fields['enterprise_id'].widget.attrs.update({'class': 'form-control'})
