@@ -68,7 +68,13 @@ class NFTProjectUpdateView(LoginRequiredMixin, UpdateView):
         elif not project.enterprise_id and self.request.user != project.developer:
             project.enterprise_id = self.request.user
         project.save()
-        return super().form_valid(form)
+
+        return redirect("developer:project-list")
+
+    def get_form_kwargs(self):
+        kwargs = super(ProjectCreateView, self).get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
 
 class ProjectCreateView(generic.CreateView):
     template_name = "dashboard/developer/project_create.html"

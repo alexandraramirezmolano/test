@@ -11,5 +11,5 @@ urlpatterns = [
     path('project-create/', ProjectCreateView.as_view(), name='project-create'),
     path('projects-list/', NFTProjectListView.as_view(), name='project-list'),
     path('project/<uuid:pk>/', NFTProjectDetailView.as_view(), name='project-detail'),
-    path('projects/<uuid:pk>/update/', NFTProjectUpdateView.as_view(), name='project-update'),
+    path('projects/update/<uuid:pk>/', NFTProjectUpdateView.as_view(), name='project-update'),
 ]
