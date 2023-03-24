@@ -10,7 +10,7 @@ class DeveloperProjectForm(forms.ModelForm):
 
     class Meta:
         model = NFTProject
-        fields = ['name','image', 'category', 'supply', 'price', 'description', 'enterprise_id', 'developer_id']
+        fields = ['name','image', 'category', 'supply', 'price', 'description', 'enterprise_id', 'developer_id', 'private']
         labels = {
             #'contract_address': 'Contrato',
             #'contract_abi': 'ABI del Contrato',
@@ -23,7 +23,8 @@ class DeveloperProjectForm(forms.ModelForm):
             #'chain': 'Cadena',
             'description': 'Descripción',
             'enterprise_id': 'Empresa',
-            'developer_id' : ''
+            'developer_id' : '',
+            'private': '¿Es privado?'
         }
         error_messages = {
             'name': {'required': 'Por favor, introduzca un nombre para el proyecto.'},
@@ -49,3 +50,4 @@ class DeveloperProjectForm(forms.ModelForm):
         self.fields['description'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Descripción'})
         self.fields['developer_id'].widget.attrs.update({'class': 'form-control','placeholder': 'Descripción','hidden': True})
         self.fields['enterprise_id'].widget.attrs.update({'class': 'form-control'})
+        self.fields['private'].widget.attrs.update({'class': 'form-check-input'})
