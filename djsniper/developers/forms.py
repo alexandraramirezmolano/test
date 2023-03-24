@@ -34,7 +34,7 @@ class DeveloperProjectForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         request = kwargs.pop('request')
         super(DeveloperProjectForm, self).__init__(*args, **kwargs)
-        self.fields['developer_id'].initial = request.user.id
+        #self.fields['developer_id'].initial = request.user.id
         # Update widget attributes
         self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nombre'})
         #self.fields['contract_address'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract Address'})
@@ -46,5 +46,5 @@ class DeveloperProjectForm(forms.ModelForm):
         #self.fields['contract_abi'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract ABI', 'rows': 5})
         self.fields['category'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Categoría'})
         self.fields['description'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Descripción'})
-        self.fields['developer_id'].widget.attrs.update({'class': 'form-control','placeholder': 'Descripción','style': 'display: none'})
+        #self.fields['developer_id'].widget.attrs.update({'class': 'form-control','placeholder': 'Descripción','style': 'display: none'})
         self.fields['enterprise_id'].widget.attrs.update({'class': 'form-control', 'style': 'display: none'})
