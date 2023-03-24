@@ -5,11 +5,13 @@
 {% block container %}
 
   <div class="card p-2 flex-column">
+
       <form class="form flex-column" method="post">
         {% csrf_token %}
         {% if user.role == "Desarrollador" %}
           <input type="hidden" name="developer_id" value="{{ user.id }}">
         {% endif %}
+        <h5 class="fw-light align-right text-center"> Actualizar proyecto </h5>
         {{ form }}
         <div class="d-flex justify-content-evenly">
             <a href="{% url 'enterprise:enterprise-projects' user.id %}" type="button" class="bg-danger-200 text-white-600 hover:bg-danger-300 hover:text-white-800 w-40">Cancelar</a>
