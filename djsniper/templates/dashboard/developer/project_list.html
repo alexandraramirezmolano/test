@@ -6,10 +6,10 @@
 
 {% block container %}
 <div class="d-flex align-right mb-2">
-  <a   href="{% url 'developer:project-create' %}" type="button" class="btn btn-light w-10 fw-bold align-center">
+  <a   href="{% url 'developer:project-create' %}" type="button" class="btn btn-success w-10 fw-bold align-center">
     Crear proyecto
   </a>
-  <h3 class="fw-bold align-left text-" >Proyectos Asignados</h3>
+  <h3 class="fw-light align-left ml-5">Proyectos Asignados</h3>
 </div>
 <div style="overflow-x auto">
   <div class="card w-100" style="display: flex; flex-direction : row; justify-content: space-around; flex-wrap: wrap; height: fit-content;">
