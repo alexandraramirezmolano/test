@@ -37,7 +37,7 @@ class NFTProjectListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        return queryset.filter(developer=self.request.user.id)
+        return queryset.filter(developer_id=self.request.user.id)
 
 
 class NFTProjectDetailView(DetailView):
