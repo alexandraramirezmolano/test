@@ -9,7 +9,7 @@
   <a   href="{% url 'developer:project-create' %}" type="button" class="btn btn-light w-10 fw-bold align-center">
     Crear proyecto
   </a>
-  Proyectos asignados
+  <h3 class="fw-bold align-left text-" >Proyectos Asignados</h3>
 </div>
 <div style="overflow-x auto">
   <div class="card w-100" style="display: flex; flex-direction : row; justify-content: space-around; flex-wrap: wrap; height: fit-content;">
@@ -39,7 +39,7 @@
                       </div>
                 {% for project in object_list %}
                   
-                      <a  href="{% url 'developers:project-update' project.id %}">
+                      <a  href="{% url 'developers:project-update' project.id %}" class="rext-decoration-none f-3">
                         <div class="row w-100" style="height: 40px;">
                             <div class="col-sm-3">
                               <p class="mb-0">{{ project.id }}</p>
