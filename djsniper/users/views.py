@@ -39,7 +39,7 @@ def login_view(request):
         username = request.POST['username']
         password = request.POST['password']
         #user = authenticate(request, username=username, password=password)
-        user = authenticate(request, username=username, password=password, backend='django.contrib.auth.backends.ModelBackend')
+        user = authenticate(request, username=username, password=password, backend='django.contrib.auth.backends.ModelBackend', **kwargs)
 
 
         if user is not None:
