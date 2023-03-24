@@ -68,3 +68,22 @@ class NFTProjectUpdateView(LoginRequiredMixin, UpdateView):
             project.enterprise_id = self.request.user
         project.save()
         return super().form_valid(form)
+
+class ProjectCreateView(generic.CreateView):
+    template_name = "dashboard/developer/project_create.html"
+    form_class = DeveloperProjectForm
+
+    def form_valid(self, form):
+        user = self.request.user
+        
+        instance = form.save()
+    
+        return redirect("developer:project-list", username=self.request.user.username)
+
+    def get_queryset(self):
+        return NFTProject.objects.all()
+
+    def get_form_kwargs(self):
+        kwargs = super(ProjectCreateView, self).get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
