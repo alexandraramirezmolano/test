@@ -34,7 +34,7 @@ class DeveloperProjectForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         request = kwargs.pop('request')
         super(DeveloperProjectForm, self).__init__(*args, **kwargs)
-        self.fields['developer_id'].initial = request.user.id
+        self.fields['developer'].initial = request.user.id
         # Update widget attributes
         self.fields['name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nombre'})
         #self.fields['contract_address'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract Address'})
