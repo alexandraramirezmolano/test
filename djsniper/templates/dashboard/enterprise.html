@@ -25,7 +25,7 @@
           <div class="card mb-4">
             <div class="card-body text-left">
               
-              <div class="d-flex align-left mb-2">
+              <div class="d-flex justify-content-left mb-2">
                   <a   href="{% url 'enterprise:enterprise-projects' user.id %}" type="button" class="btn btn-light w-100 fw-light align-center">
                     <img src="{% static 'images/dashboard/icons/wave.png' %}" style="width:30px; height:30px; margin-right: 3rem;" class="mr-2"/>
                     Proyectos
@@ -52,7 +52,7 @@
               <div class="d-flex justify-content-left mb-2">
                   <a href="{% url 'users:update' %}" type="button" class="btn btn-light w-100 fw-light p-3 text-left ">
                     <img src="{% static 'images/dashboard/icons/settings.png' %}" style="width:30px; height:30px; margin-right: 1rem;"/>
-                    Configuraciones
+                    Configurar
                   </a>
               </div>
 
@@ -65,7 +65,7 @@
                   
                   <a href="{% url 'account_logout' %}" type="button" class="btn btn-light w-100 fw-light p-3 text-left ">
                     <img src="{% static 'images/dashboard/icons/log-out.png' %}" style="width:30px; height:30px; margin-right:10px;" class="p-1"/>
-                    Cerrar sesión
+                      Salir
                   </a>
               </div>
             </div>
