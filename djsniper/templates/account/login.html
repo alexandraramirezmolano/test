@@ -19,10 +19,10 @@
             <form class="login" method="POST" action="{% url 'account_login' %}">
               {% csrf_token %}
               <div class="form-group">
-                {{ form.username|as_crispy_field }}
+                {{ form.username }}
               </div>
               <div class="form-group">
-                {{ form.password|as_crispy_field }}
+                {{ form.password }}
               </div>
               {% if redirect_field_value %}
               <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
