@@ -85,7 +85,7 @@ class ProjectListView(generic.ListView):
     template_name = "sniper/project_list.html"
 
     def get_queryset(self):
-        return NFTProject.objects.all()
+        return NFTProject.objects.filter(approved=True, private=False)
 
 
 class EnterpriseProjectsView(LoginRequiredMixin, ListView):
