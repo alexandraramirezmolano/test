@@ -42,7 +42,7 @@
                       <a  href="{% url 'developers:project-update' project.id %}" class="text-decoration-none">
                         <div class="row w-100 p-2" style="height: 40px;">
                             <div class="col-sm-1">
-                              <p class="mb-0">{{ project.id[-3:] }}</p>
+                              <p class="mb-0">{{ project.id|stringformat:"03d" }}{% with "..."|rjust:project.id|length %}{{ project.id|slice:"-"|slice:"3:" }}{% endwith %}</p>
                             </div>
                             <div class="col-sm-2">
                               <p class="text-muted mb-0">{{ project.name }}</p>
