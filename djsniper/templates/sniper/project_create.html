@@ -1,9 +1,9 @@
-
+{% load humanize %}
 {% if user.role == "Empresa" %}
   {% extends "dashboard/enterprise.html" %}
 {% if user.role == "Desarrollador" %}
   {% extends "dashboard/developer.html" %}
-{% endif %}
+{% endif  %}
 {% load tailwind_filters %}
 
 {% block container %}
