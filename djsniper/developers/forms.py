@@ -5,7 +5,7 @@ from djsniper.enterprise.models import Enterprise
 
 class DeveloperProjectForm(forms.ModelForm):
     enterprise_id = forms.ModelChoiceField(queryset=Enterprise.objects.all(),
-                                            label='Enterprise',
+                                            label='Empresa',
                                             widget=forms.Select(attrs={'class': 'form-control'}))
 
     class Meta:
@@ -18,7 +18,7 @@ class DeveloperProjectForm(forms.ModelForm):
             #'number_of_nfts': 'Cantidad de bonos',
             'image': 'Imagen',
             'category': 'Categoría',
-            'supply': 'Disponibles',
+            'supply': 'Bonos Disponibles',
             'price': 'Precio unitario',
             #'chain': 'Cadena',
             'description': 'Descripción',
@@ -47,5 +47,5 @@ class DeveloperProjectForm(forms.ModelForm):
         #self.fields['contract_abi'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Contract ABI', 'rows': 5})
         self.fields['category'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Categoría'})
         self.fields['description'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Descripción'})
-        self.fields['developer_id'].widget.attrs.update({'class': 'form-control','placeholder': 'Descripción','style': 'display: none'})
+        self.fields['developer_id'].widget.attrs.update({'class': 'form-control','placeholder': 'Descripción','style': 'display: none, visibility : hidden'})
         self.fields['enterprise_id'].widget.attrs.update({'class': 'form-control'})
