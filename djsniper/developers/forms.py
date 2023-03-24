@@ -10,7 +10,7 @@ class DeveloperProjectForm(forms.ModelForm):
 
     class Meta:
         model = NFTProject
-        fields = ['name','image', 'category', 'supply', 'price', 'description', 'developer_id', 'enterprise_id']
+        fields = ['name','image', 'category', 'supply', 'price', 'description', 'enterprise_id']
         labels = {
             #'contract_address': 'Contrato',
             #'contract_abi': 'ABI del Contrato',
