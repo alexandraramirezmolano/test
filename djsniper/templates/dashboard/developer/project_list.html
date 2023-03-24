@@ -15,25 +15,25 @@
   <div class="card w-100" style="display: flex; flex-direction : row; justify-content: space-around; flex-wrap: wrap; height: fit-content;">
               <div class="card-body w-100 overflow-x" style="height: fit-content;">
                       <div class="row w-100">
-                          <div class="col-sm-2 text-info fw-light">
+                          <div class="col-sm-3 text-success fw-light">
                             Id
                           </div>
-                          <div class="col-sm-2 text-info fw-light">
+                          <div class="col-sm-2 text-success fw-light">
                             Proyecto
                           </div>
-                         <div class="col-sm-2 text-info fw-light">
+                         <div class="col-sm-2 text-success fw-light">
                             Categoría
                           </div>
-                          <div class="col-sm-1 text-info fw-light">
+                          <div class="col-sm-1 text-success fw-light">
                             Bonos
                           </div>
-                         <div class="col-sm-2 text-info fw-light">
+                         <div class="col-sm-2 text-success fw-light">
                             Empresa
                           </div>
-                         <div class="col-sm-1 text-info fw-light">
+                         <div class="col-sm-1 text-success fw-light">
                             Privado
                          </div>
-                         <div class="col-sm-1 text-info fw-light">
+                         <div class="col-sm-1 text-success fw-light">
                             Aprobado
                         </div>
                       </div>
@@ -41,7 +41,7 @@
                   
                       <a  href="{% url 'developers:project-update' project.id %}" class="text-decoration-none">
                         <div class="row w-100 p-2" style="height: 40px;">
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                               <p class="mb-0">{{ project.id|slice:"-7:" }}</p>
                             </div>
                             <div class="col-sm-2">
