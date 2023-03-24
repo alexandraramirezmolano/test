@@ -7,13 +7,12 @@
 {% load tailwind_filters %}
 
 {% block container %}
+
   <div class="card p-2 flex-column">
       <form class="form flex-column" method="post">
         {% csrf_token %}
         {% if user.role == "Empresa" %}
           <input type="hidden" name="enterprise_id" value="{{ user.id }}">
-        {% else %}
-          <input type="hidden" name="developer_id" value="{{ user.id }}">
         {% endif %}
         {{ form }}
         <div class="d-flex justify-content-evenly">
@@ -22,4 +21,5 @@
         </div>
       </form>
   </div>
+
 {% endblock container %}
