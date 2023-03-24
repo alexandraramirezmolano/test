@@ -16,8 +16,8 @@ class EnterpriseProjectForm(forms.ModelForm):
             'price': 'Precio unitario',
             'description': 'Descripción',
             'private': '¿Es privado?',
-            'developer_id' : 'Desarrollador',
-            'enterprise_id' : ''
+            'enterprise_id' : '',
+            'developer_id' : 'Desarrollador'
         }
         error_messages = {
             'name': {'required': 'Por favor, introduzca un nombre para el proyecto.'},
