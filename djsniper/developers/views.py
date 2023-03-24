@@ -47,9 +47,9 @@ class NFTProjectDetailView(DetailView):
     context_object_name = 'project'
 
 class ProjectUpdateView(UpdateView):
-    model = Project
-    form_class = ProjectForm
-    template_name = 'developers/project_form.html'
+    model = NFTProject
+    form_class = DeveloperProjectForm
+    template_name = 'dashboard/developer/project_update.html'
 
     def get_form_kwargs(self):
         kwargs = super(ProjectUpdateView, self).get_form_kwargs()
