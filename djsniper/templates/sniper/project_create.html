@@ -8,7 +8,8 @@
             {% csrf_token %}
             {% if  user.role == "Empresa" %}
               <input type="hidden" name="enterprise_id" value="{{ user.id }}">
-            
+            {% elif user.role == "Desarrollador" %}
+              <input type="hidden" name="developer_id" value="{{ user.id }}">
             {% endif %}
             {{ form }}
             <div class="d-flex justify-content-evenly">
