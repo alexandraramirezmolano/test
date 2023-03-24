@@ -1,4 +1,4 @@
- {% extends "dashboard/enterprise.html" %}
+{% extends "dashboard/developer.html" %}
 
 {% load tailwind_filters %}
 
@@ -7,8 +7,8 @@
   <div class="card p-2 flex-column">
       <form class="form flex-column" method="post">
         {% csrf_token %}
-        {% if user.role == "Empresa" %}
-          <input type="hidden" name="enterprise_id" value="{{ user.id }}">
+        {% if user.role == "Desarrollador" %}
+          <input type="hidden" name="developer_id" value="{{ user.id }}">
         {% endif %}
         {{ form }}
         <div class="d-flex justify-content-evenly">

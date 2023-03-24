@@ -189,16 +189,18 @@ class OrderCreateView(generic.CreateView):
         return Order.objects.all()
 
 class ProjectCreateView(generic.CreateView):
-    template_name = "sniper/project_create.html"
-    form_class = EnterpriseProjectForm
 
     def form_valid(self, form):
         user = self.request.user
         
         instance = form.save()
         if user.role == "Desarrollador":
+            template_name = "dashboard/developer/project_create.html"
+            form_class = DeveloperProjectForm
             return redirect("developers:project-list")
         elif user.role == "Empresa":
+            template_name = "sniper/project_create.html"
+            form_class = EnterpriseProjectForm
             return redirect("enterprise:enterprise-projects", username=self.request.user.username)
 
     def get_queryset(self):
