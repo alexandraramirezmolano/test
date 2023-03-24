@@ -1,7 +1,7 @@
 {% load humanize %}
 {% if user.role == "Empresa" %}
   {% extends "dashboard/enterprise.html" %}
-{% elif user.role == "Desarrollador" %}
+{% else %}
   {% extends "dashboard/developer.html" %}
 {% endif %}
 {% load tailwind_filters %}
@@ -12,7 +12,7 @@
         {% csrf_token %}
         {% if user.role == "Empresa" %}
           <input type="hidden" name="enterprise_id" value="{{ user.id }}">
-        {% elif user.role == "Desarrollador" %}
+        {% else %}
           <input type="hidden" name="developer_id" value="{{ user.id }}">
         {% endif %}
         {{ form }}
