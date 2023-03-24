@@ -43,7 +43,7 @@ def login_view(request):
 
 
         if user is not None:
-            #user.backend = 'django.contrib.auth.backends.ModelBackend'
+            user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, user)
             if user.role == "Desarrollador":
                 return redirect('developer_home')
