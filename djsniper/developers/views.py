@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .forms import DeveloperProjectForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import generic
 
 
 class DeveloperListView(ListView):
