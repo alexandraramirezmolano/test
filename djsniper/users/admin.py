@@ -4,12 +4,12 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
 from djsniper.users.forms import UserChangeForm, UserCreationForm
-from .models import User as UserModel, Order, Investor
+from .models import User as Role, User, PaymentMethod, CoalBonus, Project, PurchaseOrder
 
 User = get_user_model()
 
 
-# @admin.register(User)
+@admin.register(User)
 class UserAdmin(auth_admin.UserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
@@ -29,46 +29,53 @@ class UserAdmin(auth_admin.UserAdmin):
         ),
         (_("Important dates"), {"fields": ("last_login", "date_joined")}),
     )
-    list_display = ["username", "name", "email", "image", "nit", "allowed", "phone", "contact", "role"]
+    #list_display = ["username", "name", "email", "image", "nit", "allowed", "phone", "contact", "role"]
     #list_display = '__all__'
-    list_editable = ["image", "allowed", "phone", "nit", "contact", "role"]
-    list_filter = [ "allowed", "role"]
-    search_fields = ["username", "name", "email"]
+    #list_editable = ["image", "allowed", "phone", "nit", "contact", "role"]
+    #list_filter = [ "allowed", "role"]
+    #search_fields = ["username", "name", "email"]
+    list_display = ('id', 'name', 'first_name', 'last_name', 'verified', 'nit', 'role')
+    list_filter = ('verified', 'role')
+    search_fields = ('name', 'first_name', 'last_name', 'nit')
     list_per_page = 15
 
+@admin.register(PaymentMethod)
+class PaymentMethodAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'api_key')
 
-class UserModelAdmin(admin.ModelAdmin):
-    model = UserModel
-    list_display = ["username", "name", "email",  "image", "nit", "allowed", "phone", "contact", "role", "display_projects"]
-    #list_display = '__all__'
-    list_editable = ["image", "allowed", "phone", "nit", "contact", "role", "display_projects"]
-    list_filter = ["allowed", "role"]
-    search_fields = ["username", "name", "email"]
-    list_per_page = 15
+@admin.register(CoalBonus)
+class CoalBonusAdmin(admin.ModelAdmin):
+    list_display = ('id', 'contract', 'owner')
 
-    def display_projects(self, obj):
-        return ', '.join([project.name for project in obj.project.all()])
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'description', 'enterprise', 'developer', 'investor', 'price')
+    list_filter = ('private', 'verified')
+    search_fields = ('name', 'description', 'blockchain')
+    autocomplete_fields = ('enterprise', 'developer', 'investor')
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'description', 'contract', 'image', 'coal_bonuses', 'bonuses_quantity', 'price', 'blockchain', 'ton_of_carbon_equivalent')
+        }),
+        ('Privacy', {
+            'fields': ('private',)
+        }),
+        ('Verification', {
+            'fields': ('verified',)
+        }),
+        ('Users', {
+            'fields': ('enterprise', 'developer', 'investor')
+        }),
+    )
 
-    display_projects.short_description = 'Projects'
-
-class OrderAdmin(admin.ModelAdmin):
-    model = Order
-    list_display = ["id", "created", "edited", "nft", "purchase", "bonuses", "voucher", "approved"]
-    list_editable = ["voucher","approved"]
-    list_filter = ["nft", "approved", "voucher"]
-    search_fields = ["nft", "approved"]
-    list_per_page = 10
+@admin.register(PurchaseOrder)
+class PurchaseOrderAdmin(admin.ModelAdmin):
+    list_display = ('id', 'customer', 'project', 'bonuses_quantity', 'purchase_value', 'payment_method', 'verified')
+    list_filter = ('verified',)
+    search_fields = ('customer__name', 'project__name')
+    autocomplete_fields = ('customer', 'project', 'payment_method')
 
 
-class InvestorAdmin(UserAdmin):
-    model = Investor
-    list_display = ["username", "name", "email", "image", "nit", "allowed", "phone", "contact", "role"]
-    list_editable = ["image", "allowed", "phone", "nit", "contact", "role"]
-    list_filter = [ "allowed", "role"]
-    search_fields = ["username", "name", "email"]
-    list_per_page = 15
-
-
-admin.site.register(Investor, InvestorAdmin)
-admin.site.register(User, UserAdmin)
-admin.site.register(Order, OrderAdmin)
+@admin.register(Role)
+class RoleAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'buy', 'sell', 'create', 'edit', 'delete', 'list')
