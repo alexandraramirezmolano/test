@@ -16,7 +16,7 @@ import os
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = "h6=qc&mijc&ix9pwq4eybjv-aho4-fm1pvk+_sl7ua-1+_ut"
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["ec2-54-198-160-226.compute-1.amazonaws.com", "gaya.live", "http://dev.biitaenterprise.s3-website-us-east-1.amazonaws.com/"])
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["ec2-3-130-99-80.us-east-2.compute.amazonaws.com", "3.130.99.80"])
 
 # DATABASES
 # ------------------------------------------------------------------------------
