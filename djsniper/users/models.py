@@ -17,10 +17,8 @@ class Role(models.Model):
 
 
 class User(AbstractUser):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    user_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     name = models.CharField(max_length=255)
-    first_name = models.CharField(max_length=30, null=True, blank=True)
-    last_name = models.CharField(max_length=30, null=True, blank=True)
     image = models.ImageField()
     verified = models.BooleanField(default=False)
     nit = models.CharField(max_length=255)

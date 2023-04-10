@@ -1,14 +1,14 @@
 from django.contrib.auth import forms as admin_forms
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
-from .models import User, Order
+from .models import User
 from django import forms
-from djsniper.sniper.models import NFTProject
+#from djsniper.sniper.models import NFTProject
 
 class UserChangeForm(admin_forms.UserChangeForm):
     class Meta(admin_forms.UserChangeForm.Meta):
         model = User
-        fields = ["name", "first_name", "last_name", "image", "phone"]
+        fields = ["name", "first_name", "last_name", "image"]
 
 
 class UserChangePassword(admin_forms.PasswordChangeForm):
@@ -26,40 +26,3 @@ class UserCreationForm(admin_forms.UserCreationForm):
         }
 
 
-class UserPersonalCreationForm(admin_forms.UserCreationForm):
-    class Meta(admin_forms.UserCreationForm.Meta):
-        model = User
-        fields = ["username", "name", "first_name", "last_name", "nit", "phone", "contact", "email"]
-
-
-class UserEnterpriseCreationForm(admin_forms.UserCreationForm):
-
-    class Meta(admin_forms.UserCreationForm.Meta):
-        model = User
-        fields = ["username", "name", "nit", "phone", "contact", "email", "role"]
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['role'].widget.attrs.update({"value": "Empresa", "class": "invisible", "type": "hidden"})
-        self.fields['role'] = forms.CharField(widget=forms.HiddenInput())
-
-
-class OrderCreationForm(forms.ModelForm):
-    class Meta(forms.Form):
-        model = Order
-        fields = ["id", "nft", "bonuses", "buyer"]
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-
-
-class OrderUpdateForm(forms.ModelForm):
-    class Meta(forms.Form):
-        model = Order
-        fields = ["nft", "purchase", "bonuses", "buyer", "voucher"]
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self.fields["nft"].widget.attrs.update({'readonly': 'readonly'})
