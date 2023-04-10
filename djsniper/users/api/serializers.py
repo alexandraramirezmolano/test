@@ -14,7 +14,7 @@
 #        }
 
 from rest_framework import serializers
-from .models import User, Role, CustomGroup, CustomPermission, PaymentMethod, CoalBonus, Project, PurchaseOrder
+from users.models import User, Role, CustomGroup, CustomPermission, PaymentMethod, CoalBonus, Project, PurchaseOrder
 
 
 class RoleSerializer(serializers.ModelSerializer):
