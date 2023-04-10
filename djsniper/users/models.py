@@ -49,6 +49,7 @@ class User(AbstractUser, PermissionsMixin):
         related_name='custom_user_set',
         related_query_name='custom_user'
     )
+    is_superuser = models.BooleanField(default=False)
 
 
 class PaymentMethod(models.Model):
