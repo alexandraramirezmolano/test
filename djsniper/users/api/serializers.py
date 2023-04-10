@@ -14,14 +14,14 @@
 #        }
 
 from rest_framework import serializers
-from users.models import User, Role, CustomGroup, CustomPermission, PaymentMethod, CoalBonus, Project, PurchaseOrder
+from djsniper.users.models import User, Role, CustomGroup, CustomPermission, PaymentMethod, CoalBonus, Project, PurchaseOrder
+
 
 
 class RoleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Role
         fields = '__all__'
-
 
 class CustomGroupSerializer(serializers.ModelSerializer):
     class Meta:
@@ -41,7 +41,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('user_id', 'username', 'email', 'name', 'image', 'verified', 'nit', 'role', 'groups', 'user_permissions', 'is_superuser')
+        fields = ('user_id', 'username', 'email', 'name', 'image', 'verified', 'nit', 'groups', 'user_permissions', 'is_superuser')
 
 
 class PaymentMethodSerializer(serializers.ModelSerializer):
