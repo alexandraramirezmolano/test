@@ -32,11 +32,11 @@ http:
   routers:
     web-secure-router:
       #rule: "Host(`ec2-54-198-160-226.compute-1.amazonaws.com`) || Host(`www.ec2-54-198-160-226.compute-1.amazonaws.com`) || Host(`gaya.live`) || Host(`www.gaya.live`)"
-      #rule : "Host(`ec2-3-130-99-80.us-east-2.compute.amazonaws.com` || Host(`www.ec2-3-130-99-80.us-east-2.compute.amazonaws.com`) || Host(`3.130.99.80`))"
+      #rule : "Host(`ec2-54-198-160-226.compute-1.amazonaws.com` || Host(`www.ec2-54-198-160-226.compute-1.amazonaws.com`) || Host(`54.198.160.226`))"
       rule: |
-        Host(`ec2-3-130-99-80.us-east-2.compute.amazonaws.com`) ||
-        Host(`www.ec2-3-130-99-80.us-east-2.compute.amazonaws.com`) ||
-        Host(`3.130.99.80`)
+        Host(`ec2-54-198-160-226.compute-1.amazonaws.com`) ||
+        Host(`www.ec2-54-198-160-226.compute-1.amazonaws.com`) ||
+        Host(`54.198.160.226`)
       entryPoints:
         - web-secure
       middlewares:
@@ -49,9 +49,9 @@ http:
     flower-secure-router:
       #rule: "Host(`ec2-54-198-160-226.compute-1.amazonaws.com`) || Host(`gaya.live`)"
       rule : |
-        Host(`ec2-3-130-99-80.us-east-2.compute.amazonaws.com`) ||
-        Host(`www.ec2-3-130-99-80.us-east-2.compute.amazonaws.com`) ||
-        Host(`3.130.99.80`)
+        Host(`ec2-54-198-160-226.compute-1.amazonaws.com`) ||
+        Host(`www.ec2-54-198-160-226.compute-1.amazonaws.com`) ||
+        Host(`54.198.160.226`)
       entryPoints:
         - flower
       service: flower
