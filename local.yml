@@ -55,25 +55,25 @@ services:
     image: redis:6
     container_name: sniper_redis
 
-  celeryworker:
-    <<: *django
-    image: djsniper_local_celeryworker
-    container_name: sniper_celeryworker
-    depends_on:
-      - redis
-      - postgres
-    ports: []
-    command: /start-celeryworker
+  #celeryworker:
+  #  <<: *django
+  #  image: djsniper_local_celeryworker
+  #  container_name: sniper_celeryworker
+  #  depends_on:
+  #    - redis
+  #    - postgres
+  #  ports: []
+  #  command: /start-celeryworker
 
-  celerybeat:
-    <<: *django
-    image: djsniper_local_celerybeat
-    container_name: sniper_celerybeat
-    depends_on:
-      - redis
-      - postgres
-    ports: []
-    command: /start-celerybeat
+  #celerybeat:
+  #  <<: *django
+  #  image: djsniper_local_celerybeat
+  #  container_name: sniper_celerybeat
+  #  depends_on:
+  #    - redis
+  #    - postgres
+  #  ports: []
+  #  command: /start-celerybeat
 
 #  flower:
 #    <<: *django
